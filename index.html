@@ -62,7 +62,7 @@
   /* ─── Hero ────────────────────────────────────────────────────────── */
   .hero{position:relative;background:linear-gradient(155deg,#13314C 0%,#0E2740 100%);color:#fff;overflow:hidden;min-height:600px;display:flex;align-items:center}
   .hero-media{position:absolute;inset:0;z-index:0}
-  .hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:75% 30%}
+  .hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
   /* navy wash: opaque on the left (where text sits) → clear on the right (physician) */
   .hero-overlay{position:absolute;inset:0;z-index:1;background:
     linear-gradient(90deg,#0E2740 0%,rgba(14,39,64,.94) 26%,rgba(19,49,76,.55) 58%,rgba(19,49,76,.12) 100%),
@@ -76,7 +76,7 @@
   .hero .micro{margin-top:18px;font-size:12.5px;color:#9FB4C8;display:flex;align-items:center;gap:8px}
   .hero .micro b{color:#CFE7E3;font-weight:600}
   @media(max-width:880px){.hero-in{padding:64px 28px}.hero h1{font-size:40px}
-    .hero-media img,.hero-media video{object-position:72% 20%}
+    .hero-media img,.hero-media video{object-position:center 42%}
     .hero-overlay{background:linear-gradient(180deg,rgba(14,39,64,.62) 0%,rgba(14,39,64,.86) 70%,#0E2740 100%)}}
 
   /* hero art card */
@@ -230,8 +230,8 @@
 <!-- ─── HERO ────────────────────────────────────────────────────────── -->
 <section class="hero" id="top">
   <div class="hero-media">
-    <video poster="assets/hero.png" autoplay muted loop playsinline>
-      <source src="assets/hero-loop.mp4" type="video/mp4" />
+    <video poster="assets/hero-walk.png" autoplay muted loop playsinline>
+      <source src="assets/hero-walk-loop.mp4" type="video/mp4" />
     </video>
   </div>
   <div class="hero-overlay"></div>
