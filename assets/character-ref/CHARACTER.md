@@ -4,10 +4,19 @@ Reference identity for generating consistent videos of the woman who walks into 
 building in the obmob-site hero. Face was designed fresh; silhouette matches the
 original walk-in shot (`assets/hero-walk-loop.mp4`).
 
-## Reference images
-- `master-front.png` — full-body front master (the anchor)
-- `turnaround.png` — front / 3-4 / profile / back
-- `expressions.png` — neutral / warm smile / serious / surprised
+## Asset index (all in this folder)
+| File | Purpose |
+|---|---|
+| `master-front.png` | Full-body front master — the anchor every other asset is built from. |
+| `turnaround.png` | Multi-angle sheet: front / 3-4 / profile / back. |
+| `expressions-locked.png` | Expression sheet: neutral / warm smile / serious / surprised. |
+| `face-closeup.png` | Front face close-up, even beauty lighting — anchor for tight shots. |
+| `hands-detail.png` | Hands reference: one relaxed at side, one pushing a door. No rings/watch. |
+| `building-plate.png` | Environment plate — modern glass lobby, navy + ivory, no people. |
+| `panels/turn-1-front.png` … `turn-4-back.png` | Individual turnaround crops (front / 3-4 / profile / back). |
+| `panels/expr-1-neutral.png` … `expr-4-surprised.png` | Individual expression crops (from `expressions-locked.png`). |
+
+All panels are cropped from the current sheets; nothing references a superseded version.
 
 ## Locked physical description
 - Woman, mid-30s, slim athletic build, ~5'7".
@@ -22,6 +31,11 @@ original walk-in shot (`assets/hero-walk-loop.mp4`).
 - Matching navy slim-fit trousers.
 - Black pointed-toe heels.
 
+## Locked lighting & background (for studio/reference shots)
+- Soft, even, warm-neutral studio light.
+- Plain light-grey seamless background.
+- Photoreal, sharp focus, neutral color grade.
+
 ## Copy-paste character block for Kling / Veo prompts
 > A woman in her mid-30s with a slim build, warm light-olive skin, dark brown eyes,
 > and dark near-black hair pulled into a smooth sleek low bun with a center part.
@@ -30,8 +44,19 @@ original walk-in shot (`assets/hero-walk-loop.mp4`).
 > stud earrings. Poised, intelligent, and professional.
 
 ## Consistency tips
-- In Kling 3.0, add `master-front.png` (or the relevant turnaround panel) as the
-  start frame, then paste the character block above into the prompt.
-- For a front-facing shot use the front/3-4 panel; for the walk-away shot use the
-  back panel from `turnaround.png` as the start frame.
-- Keep lighting/wardrobe wording identical across prompts to avoid drift.
+- In Kling 3.0, add the relevant reference image as the **start frame**, then paste
+  the character block above into the prompt.
+  - Face-forward / reveal shot → `panels/turn-1-front.png` or `face-closeup.png`.
+  - Three-quarter shot → `panels/turn-2-threequarter.png`.
+  - Walk-away / walk-in shot → `panels/turn-4-back.png`.
+  - Door / hand-on-glass shot → `hands-detail.png`.
+  - Need an empty set to composite into → `building-plate.png`.
+- Keep lighting and wardrobe wording identical across prompts to avoid drift.
+- Do NOT: change hair color/style, show loose or down hair, add glasses, change eye
+  color, change the outfit, or add other people.
+
+## How these were generated
+- `master-front.png` — GPT Image 2 text-to-image (media-gen `image_generate`).
+- All identity-locked assets — GPT Image 2 `image_edit` anchored to `master-front.png`.
+- `building-plate.png` — `image_generate` (no identity needed, no people).
+- Panels — cropped from the sheets with ffmpeg (even 4-way vertical split).
