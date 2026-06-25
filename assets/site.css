@@ -1,0 +1,47 @@
+/* Shared styles for ObMob sub-pages (about, contact, privacy, terms) — matches index.html tokens */
+:root{
+  --navy:#13314C;--navy-deep:#0E2740;--navy-mid:#2A547C;--navy-soft:#EAF0F6;
+  --teal:#2FA89B;--teal-deep:#1F7A70;--teal-soft:#E4F3F1;
+  --canvas:#F6F8FB;--surface:#FFFFFF;
+  --ink:#14283A;--ink-2:#41566B;--muted:#7E8D9C;--line:#E4E9EF;
+  --serif:'Newsreader',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--col:760px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--canvas);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--teal-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+
+header.nav{position:sticky;top:0;z-index:50;background:rgba(246,248,251,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--col);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .seal{width:30px;height:30px;border:1.6px solid var(--teal);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:11px;color:var(--teal-deep)}
+.brand .wordmark{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--navy);letter-spacing:.3px}
+.nav-in a.home{font-size:13.5px;font-weight:500;color:var(--ink-2)}
+
+main{max-width:var(--col);margin:0 auto;padding:54px 24px 10px}
+.eyebrow{font-size:11px;letter-spacing:.9px;text-transform:uppercase;font-weight:600;color:var(--teal-deep);margin:0 0 10px}
+h1{font-family:var(--serif);font-weight:500;font-size:38px;line-height:1.15;color:var(--navy);margin:0 0 10px}
+h2{font-family:var(--serif);font-weight:500;font-size:23px;color:var(--navy);margin:34px 0 10px}
+h3{font-size:15.5px;font-weight:600;color:var(--navy);margin:22px 0 4px}
+p,li{color:var(--ink-2);font-size:15.5px}
+.lead{font-size:18px;color:var(--ink);line-height:1.6}
+.meta{color:var(--muted);font-size:13.5px;margin:0 0 4px}
+ul{padding-left:20px}
+li{margin:5px 0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:var(--navy-soft);color:var(--navy);font-weight:600}
+hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+.draft{background:var(--teal-soft);border:1px solid var(--teal);border-radius:10px;padding:12px 15px;font-size:13px;color:var(--teal-deep);line-height:1.6;margin:0 0 28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14px;padding:11px 22px;border-radius:10px;background:var(--teal);color:#fff!important;border:0;cursor:pointer}
+.btn:hover{background:var(--teal-deep);text-decoration:none}
+
+footer{background:var(--navy-deep);color:#8497AC;margin-top:60px}
+.f-in{max-width:var(--col);margin:0 auto;padding:40px 24px}
+footer a{color:#A9BBCE}
+.f-nav{display:flex;gap:20px;flex-wrap:wrap;font-size:13.5px;margin-bottom:20px}
+.disclaimer{font-size:12px;color:#6E8499;line-height:1.7}
+.disclaimer b{color:#92A6BB}
+.copyright{margin-top:16px;font-size:12px;color:#5E748E}
+@media(max-width:640px){h1{font-size:30px}main{padding-top:40px}}
