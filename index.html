@@ -223,7 +223,7 @@
       <a href="#product">How it helps</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
-      <a class="btn btn-primary" href="#pricing">Start free <span class="arr">→</span></a>
+      <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">→</span></a>
     </nav>
   </div>
 </header>
@@ -242,7 +242,7 @@
       <h1>Walk in already<br/>knowing how it <em>feels</em>.</h1>
       <p class="sub">A voice-AI examiner that drills you the way the real oral exam does — calm, neutral, relentless.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#pricing">Start with 3 free mock orals <span class="arr">→</span></a>
+        <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">→</span></a>
         <a class="btn btn-ghost on-navy" href="#how">See how it works</a>
       </div>
       <p class="micro"><span class="live" style="color:var(--teal-bright)"><span class="dot"></span></span> <b>Prepare on your cases</b>, not someone else's.</p>
@@ -348,7 +348,7 @@
           <li>3 full voice mock orals</li>
           <li>Scorecard + model answer each time</li>
         </ul>
-        <span class="btn btn-ghost" aria-disabled="true" style="justify-content:center;opacity:.5;cursor:not-allowed;pointer-events:none">Coming soon</span>
+        <a class="btn btn-ghost" href="#waitlist" style="justify-content:center">Join the waitlist</a>
       </div>
       <div class="tier feature reveal">
         <span class="badge">Most chosen</span>
@@ -361,7 +361,7 @@
           <li>Delivery coaching &amp; weak-area tracking</li>
           <li>Premium voice, sharper grading</li>
         </ul>
-        <span class="btn btn-primary" aria-disabled="true" style="justify-content:center;opacity:.5;cursor:not-allowed;pointer-events:none">Coming soon</span>
+        <a class="btn btn-primary" href="#waitlist" style="justify-content:center">Notify me <span class="arr">→</span></a>
       </div>
       <div class="tier reveal">
         <div class="tname">Premium</div>
@@ -373,7 +373,7 @@
           <li>Deepest post-case grading</li>
           <li>3/6/12-month study schedule</li>
         </ul>
-        <span class="btn btn-ghost" aria-disabled="true" style="justify-content:center;opacity:.5;cursor:not-allowed;pointer-events:none">Coming soon</span>
+        <a class="btn btn-ghost" href="#waitlist" style="justify-content:center">Notify me</a>
       </div>
     </div>
   </div>
@@ -384,7 +384,7 @@
   <div class="wrap">
     <h2>The room should be the <em>second</em> time it happens.</h2>
     <p>Rehearse on your real cases until the oral feels like one you've already passed.</p>
-    <a class="btn btn-primary" href="#pricing" style="font-size:15px;padding:15px 28px">Start with 3 free mock orals <span class="arr">→</span></a>
+    <a class="btn btn-primary" href="#waitlist" style="font-size:15px;padding:15px 28px">Get early access <span class="arr">→</span></a>
   </div>
 </section>
 
@@ -413,12 +413,77 @@
   </div>
 </footer>
 
+<!-- ─── WAITLIST MODAL ──────────────────────────────────────────────── -->
+<style>
+  .wl-overlay{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(14,39,64,.55);backdrop-filter:blur(4px)}
+  .wl-overlay.open{display:flex}
+  .wl-card{background:#fff;border-radius:18px;max-width:460px;width:100%;padding:34px 32px;box-shadow:0 24px 60px rgba(14,39,64,.35);position:relative;animation:wlIn .22s ease}
+  @keyframes wlIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .wl-close{position:absolute;top:12px;right:15px;background:none;border:0;font-size:26px;line-height:1;color:#7E8D9C;cursor:pointer}
+  .wl-card .eyebrow{color:#1F7A70}
+  .wl-card h2{font-family:'Newsreader',Georgia,serif;font-weight:500;color:#13314C;font-size:27px;margin:8px 0 10px;line-height:1.15}
+  .wl-card p{color:#41566B;font-size:15px;line-height:1.6;margin:0}
+  .wl-form{display:flex;flex-direction:column;gap:11px;margin:18px 0 10px}
+  .wl-input{padding:13px 15px;border:1px solid #E4E9EF;border-radius:10px;font-size:15px;font-family:inherit;color:#14283A}
+  .wl-input:focus{outline:none;border-color:#2FA89B;box-shadow:0 0 0 3px rgba(47,168,155,.16)}
+  .wl-submit{justify-content:center;font-size:15px;padding:13px}
+  .wl-hp{position:absolute!important;left:-9999px}
+  .wl-msg{font-size:14px;padding:11px 14px;border-radius:9px;margin:6px 0 0;line-height:1.5}
+  .wl-msg.ok{background:#E4F3F1;color:#1F7A70;border:1px solid #2FA89B}
+  .wl-msg.err{background:#FBEAEA;color:#B23B3B;border:1px solid #E0A3A3}
+  .wl-fine{font-size:11.5px;color:#7E8D9C;margin-top:9px}
+</style>
+<div id="waitlist" class="wl-overlay" aria-hidden="true">
+  <div class="wl-card" role="dialog" aria-modal="true" aria-labelledby="wl-title">
+    <button class="wl-close" aria-label="Close" data-wl-close>&times;</button>
+    <span class="eyebrow">Early access</span>
+    <h2 id="wl-title">Join the waitlist.</h2>
+    <p>We're putting the finishing touches on ObMob. Leave your email and you'll be first in line for early access &mdash; including your <b>3 free mock orals</b> on your own cases.</p>
+    <form id="wl-form" class="wl-form">
+      <input type="hidden" name="access_key" value="f01d963e-a9c0-4412-b0bd-28de7c209281">
+      <input type="hidden" name="subject" value="New ObMob waitlist signup">
+      <input type="hidden" name="from_name" value="ObMob Waitlist">
+      <input type="checkbox" name="botcheck" class="wl-hp" tabindex="-1" autocomplete="off">
+      <input type="email" name="email" required placeholder="you@hospital.org" class="wl-input" autocomplete="email" aria-label="Email address">
+      <button type="submit" class="btn btn-primary wl-submit">Join the waitlist <span class="arr">&rarr;</span></button>
+    </form>
+    <p class="wl-msg" hidden></p>
+    <p class="wl-fine">No spam &mdash; we'll only email you about early access. ObMob is independent of ABOG.</p>
+  </div>
+</div>
+
 <script>
   // Scroll reveal — subtle, respects reduced-motion via CSS
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*70)+'ms'; io.observe(el); });
+
+  // Waitlist modal — opens on #waitlist hash; submits to Web3Forms via AJAX
+  (function(){
+    const overlay = document.getElementById('waitlist');
+    if(!overlay) return;
+    const form = document.getElementById('wl-form');
+    const msg = overlay.querySelector('.wl-msg');
+    function open(){ overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); const i=overlay.querySelector('.wl-input'); if(i) setTimeout(()=>i.focus(),60); }
+    function close(){ overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); if(location.hash==='#waitlist'){ history.replaceState(null,'',location.pathname); } }
+    function check(){ if(location.hash==='#waitlist') open(); }
+    window.addEventListener('hashchange', check); check();
+    overlay.addEventListener('click', e=>{ if(e.target===overlay || e.target.hasAttribute('data-wl-close')) close(); });
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape' && overlay.classList.contains('open')) close(); });
+    form && form.addEventListener('submit', async e=>{
+      e.preventDefault();
+      msg.hidden=true; msg.className='wl-msg';
+      const btn=form.querySelector('.wl-submit'); const old=btn.innerHTML; btn.disabled=true; btn.textContent='Joining…';
+      try{
+        const data=Object.fromEntries(new FormData(form));
+        const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
+        const json=await res.json();
+        if(json.success){ form.style.display='none'; msg.textContent="You're on the list — we'll be in touch about early access."; msg.className='wl-msg ok'; msg.hidden=false; }
+        else { throw new Error(json.message||'error'); }
+      }catch(err){ msg.textContent='Sorry — could not submit. Email hello@obmob.ai and we\'ll add you.'; msg.className='wl-msg err'; msg.hidden=false; btn.disabled=false; btn.innerHTML=old; }
+    });
+  })();
 </script>
 </body>
 </html>
