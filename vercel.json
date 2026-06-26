@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "obmockoralboards.com" }], "destination": "https://obmob.ai/$1", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.obmockoralboards.com" }], "destination": "https://obmob.ai/$1", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
