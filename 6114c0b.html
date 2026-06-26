@@ -112,34 +112,40 @@
   .exam-card .q .pre{color:var(--ink-2);font-weight:500}
   .exam-card .wave{margin-top:13px}
 
-  /* ─── Phone frame + "mock oral" app screen (light theme, pop-out focus boxes) ── */
-  .phone{position:relative;width:300px;margin:0 auto;background:#0B1F33;border-radius:46px;padding:13px;
-    box-shadow:0 50px 100px rgba(8,22,38,.6),inset 0 0 0 2px rgba(255,255,255,.05)}
-  .phone-notch{position:absolute;top:25px;left:50%;transform:translateX(-50%);width:98px;height:25px;background:#0B1F33;border-radius:16px;z-index:6}
-  .phone-screen{position:relative;border-radius:33px;overflow:hidden;background:#f6f8f8;min-height:560px}
-  /* webapp light-theme palette: accent #2a8c82 · ink #13302c · gold #d29922 · chip #eef2f1/#3c504c */
-  .app-screen{padding:16px 13px 20px;color:#13302c}
-  .as-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:6px 0 9px}
+  /* ─── Phone frame + "mock oral" app screen (LIGHT theme — new-user default) ── */
+  .phone{position:relative;width:300px;margin:0 auto;background:#0a0e14;border-radius:46px;padding:13px;
+    box-shadow:0 50px 100px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
+  .phone-notch{position:absolute;top:25px;left:50%;transform:translateX(-50%);width:98px;height:25px;background:#0a0e14;border-radius:16px;z-index:6}
+  .phone-screen{position:relative;border-radius:33px;overflow:hidden;background:#f6f8f8;height:600px}
+  /* webapp LIGHT theme (new-user default): ob #1f6feb · gyn #9b7be8 · office #3fb9ad · accent/link #2a8c82 · gold #d29922 */
+  .app-screen{padding:46px 14px 20px;color:#13302c;height:100%;display:flex;flex-direction:column}   /* top clears the Dynamic Island */
+  .as-bottom{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .as-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 9px}
   .as-eyebrow{font-size:9px;letter-spacing:1.3px;text-transform:uppercase;font-weight:700;color:#2a8c82}
-  .as-chip{font-size:10px;font-weight:600;color:#3c504c;border:1px solid #e7edec;background:#eef2f1;border-radius:999px;padding:3px 10px;white-space:nowrap}
-  .as-title{font-family:var(--serif);font-size:15px;color:#13302c;line-height:1.28;margin-bottom:12px}
-  .as-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;align-items:start}
+  .as-chip{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:#1f6feb;border:1px solid rgba(31,111,235,.4);background:rgba(31,111,235,.10);border-radius:999px;padding:3px 10px 3px 9px;white-space:nowrap}
+  .as-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#1f6feb}
+  .as-title{font-family:var(--serif);font-size:15px;color:#13302c;line-height:1.28;margin-bottom:9px}
+  .as-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;grid-auto-rows:1fr}
   .as-box{background:#fff;border:1px solid #e7edec;border-radius:12px;padding:10px 11px;
     box-shadow:0 1px 2px rgba(19,48,44,.05),0 9px 20px rgba(19,48,44,.11)}
   .as-ph{font-size:8px;letter-spacing:.4px;text-transform:uppercase;font-weight:700;margin-bottom:6px;line-height:1.3}
   .as-ph.teal{color:#2a8c82}
+  .as-ph.blue{color:#1f6feb}
   .as-ph.gold{color:#d29922}
   .as-box ul{list-style:none;margin:0;padding:0}
   .as-box li{font-size:11px;color:#13302c;line-height:1.5}
-  .as-foot{margin-top:11px;font-size:9px;color:#7c8b88;line-height:1.5}
-  .as-status{text-align:center;font-size:11px;color:#3c504c;margin:16px 0 10px}
-  .as-orb{margin:0 auto;width:128px;height:128px;border-radius:50%;display:grid;place-items:center;
-    background:radial-gradient(circle,rgba(42,140,130,.16),rgba(42,140,130,.03) 62%,transparent 72%)}
-  .orb-core{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#6fe0d2,#2a8c82 72%);animation:breathe 2.6s ease-in-out infinite}
-  @keyframes breathe{0%,100%{transform:scale(.95);box-shadow:0 0 20px rgba(42,140,130,.45),0 0 0 6px rgba(42,140,130,.08)}50%{transform:scale(1.05);box-shadow:0 0 42px rgba(42,140,130,.6),0 0 0 15px rgba(42,140,130,.04)}}
+  .as-foot{margin-top:7px;font-size:9px;color:#7c8b88;line-height:1.4}
+  .as-status{text-align:center;font-size:11px;color:#3c504c;margin:0 0 12px}
+  .as-orb{position:relative;margin:0 auto;width:112px;height:112px;display:grid;place-items:center;
+    background:radial-gradient(circle,rgba(47,168,155,.15),transparent 60%)}
+  .as-orb::before,.as-orb::after{content:"";position:absolute;width:92px;height:92px;border-radius:50%;
+    border:2px solid rgba(47,168,155,.6);animation:ping 2.4s ease-out infinite}
+  .as-orb::after{animation-delay:1.2s}
+  .orb-seal{width:88px;height:88px;position:relative;z-index:2}
+  @keyframes ping{0%{transform:scale(.96);opacity:.75}70%{opacity:0}100%{transform:scale(1.5);opacity:0}}
   .as-speaking{text-align:center;font-size:11px;font-weight:600;color:#2a8c82;margin-top:13px}
   @media(max-width:880px){.phone{width:284px}}
-  @media(prefers-reduced-motion:reduce){.orb-core{animation:none}}
+  @media(prefers-reduced-motion:reduce){.as-orb::before,.as-orb::after{animation:none}}
 
   /* ─── Section scaffold ────────────────────────────────────────────── */
   section{padding:80px 0}
@@ -225,10 +231,11 @@
     </a>
     <nav class="nav-links">
       <a href="index.html#difference">The difference</a>
+      <a href="index.html#product">How it helps</a>
       <a href="index.html#how">How it works</a>
       <a href="index.html#pricing">Pricing</a>
       <!-- LAUNCH: swap href="#waitlist" → live app demo URL (e.g. https://app.obmob.ai/login) once the app is public -->
-      <a class="btn btn-primary" href="#waitlist">Start free <span class="arr">→</span></a>
+      <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">→</span></a>
     </nav>
   </div>
 </header>
@@ -253,6 +260,7 @@
         <div class="phone-notch"></div>
         <div class="phone-screen">
           <div class="app-screen">
+            <div class="as-top">
             <div class="as-head">
               <span class="as-eyebrow">Your case</span>
               <span class="as-chip">Obstetrics</span>
@@ -276,10 +284,22 @@
                 <ul><li>wt 2450g, Apgar 8/9</li></ul>
               </div>
             </div>
-            <div class="as-foot">This is your case as you recorded it — present it and defend your decisions. The examiner will then change variables to test how your management adapts.</div>
-            <div class="as-status">Wrapping up — your scorecard is being prepared.</div>
-            <div class="as-orb"><span class="orb-core"></span></div>
-            <div class="as-speaking">🔊 Examiner is speaking — mic off</div>
+            </div>
+            <div class="as-bottom">
+              <div class="as-status">Wrapping up — your scorecard is being prepared.</div>
+              <div class="as-orb">
+                <svg class="orb-seal" viewBox="0 0 100 100" aria-label="OBMOB seal">
+                  <circle cx="50" cy="50" r="48" fill="none" stroke="#C29A4A" stroke-width=".8"/>
+                  <circle cx="50" cy="50" r="46" fill="none" stroke="#13314C" stroke-width="2.4"/>
+                  <circle cx="50" cy="50" r="41.6" fill="none" stroke="#2FA89B" stroke-width="1.5" stroke-dasharray=".5 2.45" stroke-linecap="round"/>
+                  <circle cx="50" cy="50" r="37" fill="none" stroke="#13314C" stroke-width="1"/>
+                  <circle cx="50" cy="50" r="33.6" fill="none" stroke="#2FA89B" stroke-width="1.7"/>
+                  <text x="50" y="61.5" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-weight="600" font-size="31" letter-spacing="-1" fill="#13314C">OB</text>
+                  <rect x="41.5" y="65.4" width="17" height="1.3" rx=".6" fill="#2FA89B"/>
+                </svg>
+              </div>
+              <div class="as-speaking">🔊 Examiner is speaking — mic off</div>
+            </div>
           </div>
         </div>
       </div>
