@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Footer contrast — before / after</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Brand tokens copied verbatim from index.html :root */
+  :root{
+    --navy:#13314C; --navy-deep:#0E2740;
+    --teal:#2FA89B; --teal-bright:#3FB9AD;
+    --ink-2:#41566B; --line:#E4E9EF;
+    --serif:'Newsreader',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#F6F8FB;color:var(--ink-2);padding:32px}
+  h1{font-family:var(--serif);font-weight:500;color:var(--navy);font-size:24px;margin-bottom:6px}
+  .sub{font-size:14px;color:#7E8D9C;margin-bottom:26px}
+  .lab{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7E8D9C;font-weight:600;margin:24px 0 8px}
+
+  /* Footer CSS copied from index.html (both old + new wordmark rule shown per-variant) */
+  footer{background:var(--navy-deep);color:#9FB2C6;padding:40px 28px;font-size:13.5px;border-radius:12px}
+  footer .brand{display:flex;align-items:center;gap:11px;margin-bottom:10px}
+  .seal{display:inline-block;line-height:0}
+
+  /* OLD (buggy): footer .wordmark loses to .brand .wordmark (navy) -> dark on dark */
+  .old footer .wordmark{font-family:var(--serif);font-size:20px;color:var(--navy)}
+  /* NEW (fixed): higher-specificity rule wins -> white */
+  .new footer .brand .wordmark{font-family:var(--serif);font-size:20px;color:#fff}
+
+  .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;margin-bottom:8px}
+  .bad{background:#FBEAEE;color:#B23A52}
+  .good{background:#E4F3F1;color:#1F7A70}
+</style></head>
+<body>
+  <h1>Footer "OBMOB" contrast</h1>
+  <div class="sub">The seal + wordmark sit on near-black navy (<code>#0E2740</code>). Below: the live bug vs. the fix.</div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="obmob-seal" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="#13314C" stroke-width="2.5"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#2FA89B" stroke-width="1.5"/>
+      <circle cx="32" cy="32" r="23" fill="none" stroke="#13314C" stroke-width=".5" stroke-dasharray="1 3"/>
+      <text x="32" y="40" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="20" font-weight="500" fill="#13314C">OB</text>
+    </symbol>
+    <symbol id="obmob-seal-light" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#3FB9AD" stroke-width="1.5"/>
+      <circle cx="32" cy="32" r="23" fill="none" stroke="#FFFFFF" stroke-width=".5" stroke-dasharray="1 3"/>
+      <text x="32" y="40" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="20" font-weight="500" fill="#FFFFFF">OB</text>
+    </symbol>
+  </svg>
+
+  <div class="tag bad">BEFORE — navy seal + navy wordmark vanish</div>
+  <div class="old">
+    <footer>
+      <div class="brand">
+        <span class="seal"><svg width="30" height="30"><use href="#obmob-seal"/></svg></span>
+        <span class="wordmark">OBMOB</span>
+      </div>
+      <div style="max-width:30ch;color:#8497AC">Board-grade practice for the ABOG oral — built with a practicing OB/GYN.</div>
+    </footer>
+  </div>
+
+  <div class="tag good" style="margin-top:26px">AFTER — light seal + white wordmark</div>
+  <div class="new">
+    <footer>
+      <div class="brand">
+        <span class="seal"><svg width="30" height="30"><use href="#obmob-seal-light"/></svg></span>
+        <span class="wordmark">OBMOB</span>
+      </div>
+      <div style="max-width:30ch;color:#8497AC">Board-grade practice for the ABOG oral — built with a practicing OB/GYN.</div>
+    </footer>
+  </div>
+</body></html>
