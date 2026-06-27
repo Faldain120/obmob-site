@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seal — detail at size: current vs simplified</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#13314C;--navy-deep:#0E2740;--teal:#2FA89B;--teal-bright:#3FB9AD;--ink-2:#41566B;--muted:#7E8D9C;--serif:'Newsreader',Georgia,serif;--sans:'Inter',sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#F6F8FB;color:var(--ink-2);padding:30px}
+  h1{font-family:var(--serif);font-weight:500;color:var(--navy);font-size:23px;margin-bottom:4px}
+  .sub{font-size:14px;color:var(--muted);margin-bottom:26px}
+  h2{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:600;margin:28px 0 12px}
+  .row{display:flex;gap:40px;align-items:flex-end;flex-wrap:wrap}
+  .spec{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .cap{font-size:12px;color:var(--muted)}
+  .px{font-size:11px;color:#9fb}
+  .px{color:var(--teal-bright);font-weight:600}
+  .seal{line-height:0}
+  .wordmark{font-family:var(--serif);font-weight:500;color:var(--navy);letter-spacing:.3px}
+  .lock{display:flex;align-items:center;gap:11px}
+  .navbar{background:#fff;border:1px solid #E4E9EF;border-radius:12px;padding:16px 20px;display:inline-flex}
+  .foot{background:var(--navy-deep);border-radius:12px;padding:22px 24px}
+  .foot .wordmark{color:#fff}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 9px;border-radius:99px}
+  .t-old{background:#fbe9ea;color:#b23a52}.t-new{background:#e3f4f1;color:#1f7a70}
+</style></head>
+<body>
+<h1>Seal detail — current vs simplified</h1>
+<div class="sub">The seal is vector, so it's sharp at any size. The issue is the fine 0.5px dashed ring + thin strokes muddy below ~40px. "Simplified" drops the dashed ring and thickens strokes so it reads crisp small; "detailed" stays for large feature use.</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- CURRENT detailed -->
+  <symbol id="seal-detail" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="30" fill="none" stroke="#13314C" stroke-width="2.5"/>
+    <circle cx="32" cy="32" r="24" fill="none" stroke="#2FA89B" stroke-width="1.5"/>
+    <circle cx="32" cy="32" r="23" fill="none" stroke="#13314C" stroke-width=".5" stroke-dasharray="1 3"/>
+    <text x="32" y="40" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="20" font-weight="500" fill="#13314C">OB</text>
+  </symbol>
+  <!-- SIMPLIFIED small-size -->
+  <symbol id="seal-simple" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="29" fill="none" stroke="#13314C" stroke-width="3"/>
+    <circle cx="32" cy="32" r="23" fill="none" stroke="#2FA89B" stroke-width="2"/>
+    <text x="32" y="40.5" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" font-weight="600" fill="#13314C">OB</text>
+  </symbol>
+  <!-- SIMPLIFIED light (dark bg) -->
+  <symbol id="seal-simple-light" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="29" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="32" cy="32" r="23" fill="none" stroke="#3FB9AD" stroke-width="2"/>
+    <text x="32" y="40.5" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" font-weight="600" fill="#FFFFFF">OB</text>
+  </symbol>
+  <!-- DETAILED light (dark bg, large feature) -->
+  <symbol id="seal-detail-light" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="30" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cx="32" cy="32" r="24" fill="none" stroke="#3FB9AD" stroke-width="1.5"/>
+    <circle cx="32" cy="32" r="23" fill="none" stroke="#FFFFFF" stroke-width=".5" stroke-dasharray="1 3"/>
+    <text x="32" y="40" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="20" font-weight="500" fill="#FFFFFF">OB</text>
+  </symbol>
+</svg>
+
+<h2>Side by side at small sizes (where the lockups live)</h2>
+<div class="row">
+  <div class="spec"><span class="tag t-old">Current</span><svg width="30" height="30"><use href="#seal-detail"/></svg><div class="cap">30px (footer)</div></div>
+  <div class="spec"><span class="tag t-new">Simplified</span><svg width="30" height="30"><use href="#seal-simple"/></svg><div class="cap">30px</div></div>
+  <div class="spec"><span class="tag t-old">Current</span><svg width="34" height="34"><use href="#seal-detail"/></svg><div class="cap">34px (nav)</div></div>
+  <div class="spec"><span class="tag t-new">Simplified</span><svg width="34" height="34"><use href="#seal-simple"/></svg><div class="cap">34px</div></div>
+</div>
+
+<h2>Lockups — nav + footer with the simplified seal</h2>
+<div class="row">
+  <div class="navbar"><div class="lock"><span class="seal"><svg width="34" height="34"><use href="#seal-simple"/></svg></span><span class="wordmark" style="font-size:21px">OBMOB</span></div></div>
+  <div class="foot"><div class="lock"><span class="seal"><svg width="34" height="34"><use href="#seal-simple-light"/></svg></span><span class="wordmark" style="font-size:20px">OBMOB</span></div></div>
+</div>
+
+<h2>"Detailed, larger" — the feature moment (proposed: footer brand sign-off at 64px)</h2>
+<div class="row">
+  <div class="foot" style="display:flex;align-items:center;gap:18px">
+    <svg width="64" height="64"><use href="#seal-detail-light"/></svg>
+    <div>
+      <div class="wordmark" style="font-size:24px;color:#fff">OBMOB</div>
+      <div style="font-size:13px;color:#8497AC;margin-top:2px">Board-grade practice for the ABOG oral.</div>
+    </div>
+  </div>
+  <div class="spec"><span class="tag t-old">Current detailed</span><svg width="64" height="64"><use href="#seal-detail"/></svg><div class="cap">64px — detail reads</div></div>
+</div>
+<p style="font-size:12.5px;color:var(--muted);margin-top:14px;max-width:70ch">At 64px the dashed ring + concentric detail read beautifully — that's where the detailed seal belongs. At 30–34px it just turns to mush, which is why the lockups should use the simplified mark.</p>
+</body></html>
