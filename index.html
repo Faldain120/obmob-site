@@ -193,6 +193,25 @@
   .disclaimer{margin-top:24px;font-size:12px;color:#6E8499;line-height:1.7}
   .disclaimer b{color:#92A6BB}
 
+  /* ─── FAQ accordion ───────────────────────────────────────────────── */
+  .faq{max-width:780px;margin:0 auto}
+  .faq details{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:12px;transition:border-color .18s ease,box-shadow .18s ease}
+  .faq details[open]{border-color:var(--teal);box-shadow:0 14px 36px rgba(19,49,76,.07)}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px;
+    font-family:var(--serif);font-weight:500;font-size:18px;color:var(--navy)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .ic{flex-shrink:0;width:22px;height:22px;position:relative;transition:transform .22s ease}
+  .faq summary .ic::before,.faq summary .ic::after{content:"";position:absolute;background:var(--teal-deep);border-radius:2px}
+  .faq summary .ic::before{top:10px;left:3px;width:16px;height:2px}
+  .faq summary .ic::after{top:3px;left:10px;width:2px;height:16px;transition:opacity .22s ease}
+  .faq details[open] summary .ic{transform:rotate(180deg)}
+  .faq details[open] summary .ic::after{opacity:0}
+  .faq .ans{padding:0 22px 22px;color:var(--ink-2);font-size:15px;line-height:1.68;max-width:64ch}
+  .faq .ans b{color:var(--ink)}
+  .faq-foot{text-align:center;margin-top:34px}
+  .faq-foot a{color:var(--teal-deep);font-weight:600;font-size:15px}
+  .faq-foot a:hover{text-decoration:underline}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
@@ -236,6 +255,7 @@
       <a href="#difference">The difference</a>
       <a href="#product">How it helps</a>
       <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
       <a href="#pricing">Pricing</a>
       <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">→</span></a>
     </nav>
@@ -344,6 +364,44 @@
   </div>
 </section>
 
+<!-- ─── FAQ ─────────────────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions, <em>answered</em>.</h2>
+      <p style="margin-left:auto;margin-right:auto">Everything you need to know before your first mock oral.</p>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>What is OBMOB?<span class="ic"></span></summary>
+        <div class="ans">OBMOB is AI-powered preparation for the <b>ABOG OB/GYN oral certifying exam</b>. You drill realistic mock orals with a voice-AI examiner — on your own de-identified case list or on structured ABOG-style cases — and get a scorecard after every case. On paid plans you can practice as many times as you want, any time.</div>
+      </details>
+      <details>
+        <summary>Who is it for?<span class="ic"></span></summary>
+        <div class="ans">OB/GYN residents and fellows preparing for the ABOG oral certifying exam, and recent graduates who want realistic, repeatable practice without having to schedule a human examiner every time.</div>
+      </details>
+      <details>
+        <summary>How does a mock oral work?<span class="ic"></span></summary>
+        <div class="ans">You start a case — your own or a structured ABOG-style one — and the voice examiner takes you through it <b>one question at a time, with no hints or coaching</b>, just like the real room. Say &ldquo;I&rsquo;m finished&rdquo; (or set a time limit) and your scorecard appears.</div>
+      </details>
+      <details>
+        <summary>How am I graded?<span class="ic"></span></summary>
+        <div class="ans">After each case you get a scorecard: dimension-by-dimension scores, your strongest and weakest moments, and a model answer so you can see exactly what a strong response sounds like.</div>
+      </details>
+      <details>
+        <summary>How much does it cost?<span class="ic"></span></summary>
+        <div class="ans">Start <b>free</b> with 3 full voice mock orals on your own cases — no card required. <b>Pro</b> is $49/mo (or $499/yr) for unlimited mock orals plus structured ABOG-style cases and coaching. <b>Premium</b> is $99/mo (or $950/yr) for the highest-fidelity voice, deepest grading, and a 3/6/12-month study schedule.</div>
+      </details>
+      <details>
+        <summary>Is OBMOB affiliated with ABOG or ACOG?<span class="ic"></span></summary>
+        <div class="ans">No. OBMOB is an independent exam-prep product, <b>not affiliated with, sponsored by, or endorsed by</b> ABOG, ACOG, or any certifying body. Our cases and grading are aligned with the format and content expectations of the ABOG oral — but we are not connected to them.</div>
+      </details>
+    </div>
+    <div class="faq-foot"><a href="/faq">View all FAQs &rarr;</a></div>
+  </div>
+</section>
+
 <!-- ─── PRICING ─────────────────────────────────────────────────────── -->
 <section id="pricing" class="pricing">
   <div class="wrap">
@@ -417,7 +475,7 @@
       </div>
       <div class="f-links">
         <div class="f-col"><h5>Product</h5>
-          <a href="#difference">The difference</a><a href="#product">How it helps</a><a href="#how">How it works</a><a href="#pricing">Pricing</a></div>
+          <a href="#difference">The difference</a><a href="#product">How it helps</a><a href="#how">How it works</a><a href="/faq">FAQ</a><a href="#pricing">Pricing</a></div>
         <div class="f-col"><h5>Company</h5>
           <a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
       </div>
