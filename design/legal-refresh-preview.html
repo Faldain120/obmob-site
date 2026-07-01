@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ObMob — Legal refresh preview (email + update page + site)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#13314C;--navy-deep:#0E2740;--navy-mid:#2A547C;--navy-soft:#EAF0F6;--navy-line:#22456A;
+    --teal:#2FA89B;--teal-deep:#1F7A70;--teal-bright:#3FB9AD;--teal-soft:#E4F3F1;
+    --canvas:#F6F8FB;--surface:#FFFFFF;--ink:#14283A;--ink-2:#41566B;--muted:#7E8D9C;--line:#E4E9EF;
+    --gold:#C29A4A;--gold-soft:#F6EFDD;
+    --serif:'Newsreader',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:#E9EEF4;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  /* ── Preview chrome ─────────────────────────────────────────── */
+  .pv-bar{position:sticky;top:0;z-index:200;background:#0B1B2B;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+  .pv-bar .t{font-family:var(--serif);font-size:16px;font-weight:500;letter-spacing:.3px}
+  .pv-tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .pv-tab{font:600 13px var(--sans);color:#B9CADB;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    padding:8px 14px;border-radius:8px;cursor:pointer;transition:.15s}
+  .pv-tab:hover{background:rgba(255,255,255,.12);color:#fff}
+  .pv-tab.active{background:var(--teal);border-color:var(--teal);color:#fff}
+  .pv-note{margin-left:auto;font-size:12px;color:#8FA6BC}
+  .panel{display:none;padding:30px 20px 70px}
+  .panel.active{display:block}
+  .caption{max-width:760px;margin:0 auto 22px;font-size:13.5px;color:var(--ink-2);background:#fff;border:1px solid var(--line);
+    border-left:3px solid var(--teal);border-radius:8px;padding:12px 16px}
+  .caption b{color:var(--navy)}
+  .flag{color:#b03a55;font-weight:600}
+
+  /* ── Fake browser / mail frame ──────────────────────────────── */
+  .frame{max-width:900px;margin:0 auto;background:#fff;border:1px solid #cfd8e2;border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(8,22,38,.18)}
+  .frame .chrome{display:flex;align-items:center;gap:7px;background:#E7EDF3;border-bottom:1px solid #d6dee7;padding:9px 14px}
+  .frame .chrome .dot{width:11px;height:11px;border-radius:50%}
+  .frame .chrome .r{background:#ff5f57}.frame .chrome .y{background:#febc2e}.frame .chrome .g{background:#28c840}
+  .frame .chrome .url{margin-left:10px;font-size:12px;color:#65788b;background:#fff;border:1px solid #d6dee7;border-radius:6px;padding:4px 12px}
+  .scroll{max-height:640px;overflow:auto}
+
+  /* ═══ EMAIL ═══════════════════════════════════════════════════ */
+  .mail-canvas{background:#f2f4f7;padding:26px 0}
+  .email{max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(8,22,38,.12);
+    font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#14283A}
+  .em-banner{background:linear-gradient(135deg,#13314C 0%,#0E2740 100%);padding:26px 34px;position:relative}
+  .em-banner .wm{font-family:Georgia,'Times New Roman',serif;color:#fff;font-size:24px;font-weight:500;letter-spacing:.5px}
+  .em-banner .rule{height:3px;width:46px;background:#2FA89B;border-radius:2px;margin-top:12px}
+  .em-body{padding:32px 34px 10px;font-size:15px;line-height:1.62;color:#2A3B4D}
+  .em-body p{margin:0 0 16px}
+  .em-body .hi{color:#13314C;font-size:16px}
+  .em-list{margin:6px 0 20px;padding:0;list-style:none}
+  .em-list li{border-left:2px solid #E4E9EF;padding:2px 0 2px 16px;margin:0 0 16px}
+  .em-list a{color:#1F7A70;font-weight:700;text-decoration:underline;font-size:15px}
+  .em-list .why{display:block;color:#41566B;font-size:14px;margin-top:5px;line-height:1.55}
+  .em-sign{color:#13314C}
+  .em-legal{font-size:11.5px;color:#7E8D9C;line-height:1.5;padding:4px 34px 0}
+  .em-foot{border-top:1px solid #E4E9EF;margin-top:20px;padding:18px 34px 26px;font-size:11.5px;color:#8497AC;text-align:center}
+  .em-foot a{color:#1F7A70}
+
+  /* ═══ UPDATE PAGE + SITE (shared ObMob site styles) ═══════════ */
+  .site{font-family:var(--sans);color:var(--ink);background:var(--canvas)}
+  .site a{color:inherit;text-decoration:none}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(246,248,251,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}
+  .brand .wordmark{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--navy);letter-spacing:.3px}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{font-size:13.5px;font-weight:500;color:var(--ink-2)}
+  .nav-links a:hover{color:var(--teal-deep)}
+  .btn{display:inline-flex;align-items:center;gap:7px;font:600 13.5px var(--sans);padding:10px 18px;border-radius:9px;cursor:pointer;border:1px solid transparent}
+  .btn-primary{background:var(--teal);color:#fff}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--navy)}
+
+  /* update-notice page */
+  .legal-main{max-width:760px;margin:0 auto;padding:54px 28px 20px}
+  .eyebrow{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;color:var(--teal-deep);margin-bottom:12px}
+  .legal-main h1{font-family:var(--serif);font-weight:500;font-size:40px;line-height:1.12;letter-spacing:-.5px;color:var(--navy)}
+  .legal-main .meta{color:var(--muted);font-size:13.5px;margin-top:12px}
+  .legal-main .lead{font-size:18px;color:var(--ink);line-height:1.6;margin:22px 0 6px}
+  .legal-main p{color:var(--ink-2);font-size:16px;margin:14px 0;line-height:1.65}
+  .doc-list{list-style:none;padding:0;margin:26px 0}
+  .doc-list li{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:14px;background:#fff;
+    box-shadow:0 1px 2px rgba(19,49,76,.05),0 8px 22px rgba(19,49,76,.05)}
+  .doc-list h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--navy);margin-bottom:5px}
+  .doc-list p{margin:0 0 12px;font-size:14.5px}
+  .doc-list a.rev{color:var(--teal-deep);font-weight:600;font-size:14px}
+  .callout{background:var(--teal-soft);border:1px solid var(--teal);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--teal-deep);line-height:1.6;margin:24px 0}
+  .site footer{background:var(--navy-deep);color:#8497AC;margin-top:54px}
+  .f-in{max-width:1080px;margin:0 auto;padding:36px 28px;font-size:13px}
+  .site footer a{color:#A9BBCE}
+
+  /* site current-vs-refreshed compare */
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1180px;margin:0 auto}
+  @media(max-width:900px){.cmp{grid-template-columns:1fr}}
+  .cmp .lab{font:700 11px var(--sans);letter-spacing:1.2px;text-transform:uppercase;padding:8px 12px;border-radius:8px 8px 0 0;color:#fff}
+  .cmp .lab.cur{background:#8497AC}.cmp .lab.new{background:var(--teal-deep)}
+  .demo{background:var(--canvas);border:1px solid #cfd8e2;border-top:none;border-radius:0 0 10px 10px;overflow:hidden}
+  .demo .dnav{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);background:rgba(246,248,251,.9)}
+  .demo .dnav .w{font-family:var(--serif);color:var(--navy);font-weight:500}
+  .demo .dnav .lk{display:flex;gap:16px;font-size:12px;color:var(--ink-2)}
+  .demo .body{padding:26px 22px 30px}
+  .spec{font-size:11px;color:var(--muted);margin-top:6px}
+
+  /* CURRENT variant type */
+  .v-cur .eyebrow{color:var(--muted)}
+  .v-cur h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.15;color:var(--navy);letter-spacing:-.4px}
+  .v-cur .lead2{font-size:16px;color:var(--ink-2);line-height:1.6;margin-top:12px}
+  /* REFRESHED variant (Render-borrowed rhythm: tighter leading, hairline rules, roomier) */
+  .v-new h2{font-family:var(--serif);font-weight:500;font-size:33px;line-height:1.05;color:var(--navy);letter-spacing:-.8px}
+  .v-new .eyebrow{color:var(--teal-deep)}
+  .v-new .lead2{font-size:17px;color:var(--ink);line-height:1.55;margin-top:14px;max-width:52ch}
+  .pill3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
+  @media(max-width:560px){.pill3{grid-template-columns:1fr}}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .v-new .pcard{border-radius:10px;border-color:#dde4ec}
+  .pcard .tg{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--teal-deep)}
+  .pcard h4{font-family:var(--serif);font-weight:500;color:var(--navy);font-size:16px;margin:8px 0 4px}
+  .pcard p{font-size:12.5px;color:var(--ink-2);line-height:1.5}
+  .v-new .hair{height:1px;background:var(--line);margin:22px 0}
+</style>
+</head>
+<body>
+
+<div class="pv-bar">
+  <span class="t">ObMob · Legal refresh preview</span>
+  <div class="pv-tabs">
+    <button class="pv-tab active" data-p="email">Update email</button>
+    <button class="pv-tab" data-p="page">Update page (/privacy-update)</button>
+    <button class="pv-tab" data-p="site">Site — current vs refreshed</button>
+  </div>
+  <span class="pv-note">Preview only · nothing deployed · your fonts + Render layout</span>
+</div>
+
+<!-- ═══════════ TAB 1 — EMAIL ═══════════ -->
+<div class="panel active" id="p-email">
+  <div class="caption">Branded HTML replacement for your current plain-text agreement-update email (sent via Zoho by <b>send-agreement-update-email.mjs</b>). Mirrors Render's structure with ObMob brand. Email clients don't load web fonts, so this uses a web-safe stack (Georgia for the wordmark, system sans for body) — the same fallbacks your brand already declares. <span class="flag">Sample date / links / address are placeholders.</span></div>
+  <div class="mail-canvas">
+    <div class="email">
+      <div class="em-banner"><div class="wm">OBMOB</div><div class="rule"></div></div>
+      <div class="em-body">
+        <p class="hi">Hi Dr. Abunar,</p>
+        <p>As part of regularly reviewing our privacy and security practices, we're updating ObMob's Privacy Policy and Terms of Service on <b>August 1, 2026</b>. By continuing to use ObMob on or after August 1st, you agree to these updated policies.</p>
+        <p>We've published the updated versions ahead of the change and welcome you to review them:</p>
+        <ul class="em-list">
+          <li><a href="#">Updated Privacy Policy</a><span class="why">Reflects current privacy and data-protection requirements for how we handle your de-identified case data.</span></li>
+          <li><a href="#">Updated Terms of Service</a><span class="why">Clearer billing terms — voice-drill caps and the 4-month Pass — and stronger account-security practices. There are no changes to pricing.</span></li>
+        </ul>
+        <p>As always, ObMob remains committed to protecting your privacy and the security of your data. If you have any questions, email <a href="mailto:hello@obmob.ai" style="color:#1F7A70">hello@obmob.ai</a> or reach out from inside the app.</p>
+        <p class="em-sign">Thanks,<br>The ObMob Team</p>
+      </div>
+      <p class="em-legal">This is a legal notice, which is why you're receiving it even if you've opted out of marketing or product emails.</p>
+      <div class="em-foot">© 2026 ObMob, LLC · Connecticut, USA<br><a href="https://obmob.ai">obmob.ai</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TAB 2 — UPDATE PAGE ═══════════ -->
+<div class="panel" id="p-page">
+  <div class="caption">New dated notice page at <b>obmob.ai/privacy-update</b> (a <b>/terms-update</b> twin too) — the page the email links to. It's the short "heads-up" that points at your existing full <b>/privacy</b> and <b>/terms</b>. Uses your live site chrome. <b>Scroll inside the window</b> to see the sticky nav stay put.</div>
+  <div class="frame">
+    <div class="chrome"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">obmob.ai/privacy-update</span></div>
+    <div class="scroll site">
+      <header class="nav"><div class="nav-in">
+        <div class="brand"><span class="wordmark">OBMOB</span></div>
+        <div class="nav-links"><a href="#">Home</a><a href="#">About</a><a href="#">FAQ</a><a href="#">Contact</a><a class="btn btn-primary" href="#">Open the app</a></div>
+      </div></header>
+      <div class="legal-main">
+        <div class="eyebrow">Legal update</div>
+        <h1>Updates to our Privacy Policy &amp; Terms of Service</h1>
+        <div class="meta">Effective August 1, 2026 · Published July 1, 2026</div>
+        <p class="lead">As part of regularly reviewing our privacy and security practices, we're updating ObMob's Privacy Policy and Terms of Service. By continuing to use ObMob on or after August 1, 2026, you agree to the updated policies.</p>
+        <ul class="doc-list">
+          <li>
+            <h3>Updated Privacy Policy</h3>
+            <p>Reflects current privacy and data-protection requirements for how we handle your de-identified case data and voice transcripts.</p>
+            <a class="rev" href="#">Review the updated Privacy Policy →</a>
+          </li>
+          <li>
+            <h3>Updated Terms of Service</h3>
+            <p>Greater transparency around billing (voice-drill caps and the 4-month Pass) and enhanced account-security practices. No changes to pricing.</p>
+            <a class="rev" href="#">Review the updated Terms of Service →</a>
+          </li>
+        </ul>
+        <div class="callout">You don't need to do anything. Continued use on or after the effective date constitutes acceptance. Questions? Email <a href="mailto:hello@obmob.ai" style="color:#1F7A70;font-weight:600">hello@obmob.ai</a>.</div>
+      </div>
+      <footer><div class="f-in">© 2026 ObMob, LLC · <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></div></footer>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TAB 3 — SITE COMPARE ═══════════ -->
+<div class="panel" id="p-site">
+  <div class="caption">Scope decision: this shows what a <b>whole-site</b> refresh would look like vs today. Because you're keeping your fonts, the whole-site change is a <b>light polish</b> (tighter heading leading, a touch larger body, hairline rules, teal eyebrows) — the big visible wins are the email + update page above. Left = current, right = refreshed.</div>
+  <div class="cmp">
+    <div>
+      <div class="lab cur">Current</div>
+      <div class="demo v-cur">
+        <div class="dnav"><span class="w">OBMOB</span><span class="lk"><span>About</span><span>FAQ</span><span>Contact</span></span></div>
+        <div class="body">
+          <div class="eyebrow">The ObMob difference</div>
+          <h2>Walk in already knowing how it feels.</h2>
+          <p class="lead2">Drill on your own de-identified case list with a voice-AI examiner that probes like the real ABOG orals.</p>
+          <div class="pill3">
+            <div class="pcard"><div class="tg">OB</div><h4>Your cases</h4><p>Upload a de-identified list; drill exactly what you'll face.</p></div>
+            <div class="pcard"><div class="tg">GYN</div><h4>Voice examiner</h4><p>Real-time probing, not multiple choice.</p></div>
+            <div class="pcard"><div class="tg">Office</div><h4>Scored</h4><p>Per-topic scorecard after every drill.</p></div>
+          </div>
+          <div class="spec">Body 15.5px / 1.6 · h2 30px / 1.15 · muted eyebrow</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="lab new">Refreshed (Render-borrowed rhythm)</div>
+      <div class="demo v-new">
+        <div class="dnav"><span class="w">OBMOB</span><span class="lk"><span>About</span><span>FAQ</span><span>Contact</span></span></div>
+        <div class="body">
+          <div class="eyebrow">The ObMob difference</div>
+          <h2>Walk in already knowing how it feels.</h2>
+          <p class="lead2">Drill on your own de-identified case list with a voice-AI examiner that probes like the real ABOG orals.</p>
+          <div class="hair"></div>
+          <div class="pill3">
+            <div class="pcard"><div class="tg">OB</div><h4>Your cases</h4><p>Upload a de-identified list; drill exactly what you'll face.</p></div>
+            <div class="pcard"><div class="tg">GYN</div><h4>Voice examiner</h4><p>Real-time probing, not multiple choice.</p></div>
+            <div class="pcard"><div class="tg">Office</div><h4>Scored</h4><p>Per-topic scorecard after every drill.</p></div>
+          </div>
+          <div class="spec">Body 17px / 1.55 · h2 33px / 1.05 tighter · teal eyebrow · hairline rule</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.pv-tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.pv-tab').forEach(function(x){x.classList.remove('active')});
+      document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active')});
+      t.classList.add('active');
+      document.getElementById('p-'+t.dataset.p).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
