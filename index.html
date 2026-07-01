@@ -61,18 +61,19 @@
   @media(max-width:820px){.nav-links a:not(.btn){display:none}}
 
   /* ─── Hero ────────────────────────────────────────────────────────── */
-  .hero{position:relative;background:linear-gradient(155deg,#13314C 0%,#0E2740 100%);color:#fff;overflow:hidden;min-height:600px;display:flex;align-items:center}
+  .hero{position:relative;background:linear-gradient(155deg,#13314C 0%,#0E2740 100%);color:#fff;overflow:hidden;min-height:600px;display:flex;align-items:flex-start}
   .hero-media{position:absolute;inset:0;z-index:0}
   .hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
   /* navy wash: opaque on the left (where text sits) → clear on the right (physician) */
   .hero-overlay{position:absolute;inset:0;z-index:1;background:
     linear-gradient(90deg,#0E2740 0%,rgba(14,39,64,.94) 26%,rgba(19,49,76,.55) 58%,rgba(19,49,76,.12) 100%),
     radial-gradient(900px 520px at 18% 30%,rgba(47,168,155,.16),transparent 60%)}
-  .hero-in{max-width:var(--col);margin:0 auto;padding:96px 28px;position:relative;z-index:2;width:100%}
-  .hero-copy{max-width:36ch}
+  .hero-in{max-width:var(--col);margin:0 auto;padding:52px 28px 88px;position:relative;z-index:2;width:100%}
+  .hero-copy{max-width:40ch}
   .hero h1{color:#fff;font-size:58px;margin:18px 0 0;letter-spacing:-1px}
   .hero h1 em{color:var(--teal-bright)}
-  .hero .sub{font-size:19px;color:#D2DEEA;max-width:30ch;margin:22px 0 0}
+  .hero .sub{font-size:19px;color:#B9CBDB;max-width:40ch;margin:20px 0 0;line-height:1.5}
+  .hero .sub b{color:#fff;font-weight:700}
   .hero .cta-row{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
   .hero .micro{margin-top:18px;font-size:12.5px;color:#9FB4C8;display:flex;align-items:center;gap:8px}
   .hero .micro b{color:#CFE7E3;font-weight:600}
@@ -288,12 +289,11 @@
     <div class="hero-copy">
       <span class="eyebrow on-navy">OB/GYN · ABOG Oral Certifying Exam</span>
       <h1>Walk in already<br/>knowing how it <em>feels</em>.</h1>
-      <p class="sub">A voice-AI examiner that drills you the way the real oral exam does — calm, neutral, relentless.</p>
+      <p class="sub"><b>Prepare on your cases, not someone else's.</b> An AI voice examiner drills OB/GYN physicians on their own cases — the rigor of the exam room, the calm of a colleague in your corner.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">→</span></a>
         <a class="btn btn-ghost on-navy" href="#how">See how it works</a>
       </div>
-      <p class="micro"><span class="live" style="color:var(--teal-bright)"><span class="dot"></span></span> <b>Prepare on your cases</b>, not someone else's.</p>
     </div>
   </div>
 </section>
