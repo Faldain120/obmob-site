@@ -14,9 +14,9 @@
   :root{
     --navy:#13314C; --navy-deep:#0E2740; --navy-mid:#2A547C;
     --navy-soft:#EAF0F6; --navy-line:#22456A;
-    --teal:#2FA89B; --teal-deep:#1F7A70; --teal-bright:#3FB9AD; --teal-soft:#E4F3F1;
+    --teal:#2FA89B; --teal-deep:#1F7A70; --teal-bright:#3FB9AD; --teal-cta:#1E8377; --teal-soft:#E4F3F1;
     --canvas:#F6F8FB; --surface:#FFFFFF;
-    --ink:#14283A; --ink-2:#41566B; --muted:#7E8D9C; --line:#E4E9EF;
+    --ink:#14283A; --ink-2:#41566B; --muted:#626F7B; --line:#E4E9EF;
     --gold:#C29A4A; --gold-soft:#F6EFDD;
     --ob:#D26079; --ob-soft:#FBEAEE; --gyn:#8A6FD0; --gyn-soft:#EFEAFB;
     --office:#2FA89B; --office-soft:#E4F3F1;
@@ -36,7 +36,7 @@
   /* ─── Buttons ─────────────────────────────────────────────────────── */
   .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14px;
     padding:13px 22px;border-radius:9px;border:1px solid transparent;cursor:pointer;transition:.18s ease;white-space:nowrap}
-  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 1px 2px rgba(19,49,76,.12),0 10px 26px rgba(47,168,155,.28)}
+  .btn-primary{background:var(--teal-cta);color:#fff;box-shadow:0 1px 2px rgba(19,49,76,.12),0 10px 26px rgba(47,168,155,.28)}
   .btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px)}
   .btn-ghost{background:transparent;border-color:var(--line);color:var(--navy)}
   .btn-ghost:hover{border-color:var(--navy-mid);background:#fff}
@@ -196,18 +196,32 @@
   .cta-band h2{color:#fff;font-size:44px}.cta-band h2 em{color:var(--teal-bright)}
   .cta-band p{color:#C7D5E2;font-size:18px;margin:18px auto 32px;max-width:46ch}
 
-  /* ─── Footer ──────────────────────────────────────────────────────── */
-  footer{background:var(--navy-deep);color:#9FB2C6;padding:54px 0 40px;font-size:13.5px}
-  footer .f-in{max-width:var(--col);margin:0 auto;padding:0 28px}
-  footer .f-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;
-    padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
-  footer .brand .wordmark{font-family:var(--serif);font-size:20px;color:#fff}
-  footer .f-links{display:flex;gap:40px;flex-wrap:wrap}
-  footer .f-links a{display:block;color:#9FB2C6;padding:4px 0}
-  footer .f-links a:hover{color:var(--teal-bright)}
-  footer .f-col h5{color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-weight:600}
-  .disclaimer{margin-top:24px;font-size:12px;color:#6E8499;line-height:1.7}
-  .disclaimer b{color:#92A6BB}
+  /* ─── Footer (unified, BTK-style) ─────────────────────────────────── */
+  .site-footer{background:var(--navy-deep);color:#8497AC;font-size:13.5px}
+  .site-footer a{text-decoration:none}
+  .site-footer .f-in{max-width:var(--col);margin:0 auto;padding:40px 28px 34px;border-top:1px solid rgba(255,255,255,.12)}
+  .site-footer .f-row{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+  .site-footer .f-top{padding-bottom:26px}
+  .site-footer .f-bottom{padding-top:22px;border-top:1px solid rgba(255,255,255,.08);align-items:center}
+  .site-footer .f-brand{display:flex;align-items:center;gap:13px}
+  .site-footer .f-brand .wordmark{font-family:var(--serif);font-size:21px;font-weight:500;color:#fff;letter-spacing:.3px;line-height:1}
+  .site-footer .f-brand .f-email{display:inline-block;margin-top:5px;font-size:13.5px;color:#A9BBCE}
+  .site-footer .f-brand .f-email:hover{color:var(--teal-bright)}
+  .site-footer .f-disclaimer{max-width:560px;text-align:right;font-size:12.5px;line-height:1.7;color:#8497AC}
+  .site-footer .f-disclaimer b{color:#C0D0DF;font-weight:600}
+  .site-footer .f-copy{font-size:12.5px;color:#8497AC}
+  .site-footer .f-copy .f-note{color:#7E93A8}
+  .site-footer .f-links{display:flex;gap:26px;flex-wrap:wrap}
+  .site-footer .f-links a{font-size:13.5px;color:#A9BBCE}
+  .site-footer .f-links a:hover{color:var(--teal-bright)}
+  @media(max-width:720px){
+    .site-footer .f-row{flex-direction:column;gap:20px;align-items:center;text-align:center}
+    .site-footer .f-brand{flex-direction:column;align-items:center;gap:9px}
+    .site-footer .f-top{padding-bottom:24px}
+    .site-footer .f-top .f-disclaimer{text-align:center;max-width:none}
+    .site-footer .f-bottom{flex-direction:column-reverse;align-items:center;gap:16px}
+    .site-footer .f-links{gap:14px 22px;justify-content:center}
+  }
 
   /* ─── FAQ accordion ───────────────────────────────────────────────── */
   .faq{max-width:780px;margin:0 auto}
@@ -449,29 +463,33 @@
 </section>
 
 <!-- ─── FOOTER ──────────────────────────────────────────────────────── -->
-<footer>
+<footer class="site-footer">
   <div class="f-in">
-    <div class="f-top">
-      <div>
-        <div class="brand" style="align-items:center;gap:16px">
-          <span class="seal"><svg width="56" height="56"><use href="#obmob-seal-light"/></svg></span>
-          <div>
-            <div class="wordmark" style="font-size:24px">OBMOB</div>
-            <div style="max-width:34ch;color:#8497AC;margin-top:3px">Board-grade practice for the ABOG oral — built with a practicing OB/GYN.</div>
-          </div>
+    <div class="f-row f-top">
+      <div class="f-brand">
+        <svg width="42" height="42" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+          <circle cx="32" cy="32" r="24" fill="none" stroke="#3FB9AD" stroke-width="1.5"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="#FFFFFF" stroke-width=".5" stroke-dasharray="1 3"/>
+          <text x="32" y="40" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="20" font-weight="500" fill="#FFFFFF">OB</text>
+        </svg>
+        <div>
+          <div class="wordmark">ObMob</div>
+          <a href="mailto:hello@obmob.ai" class="f-email">hello@obmob.ai</a>
         </div>
       </div>
-      <div class="f-links">
-        <div class="f-col"><h5>Product</h5>
-          <a href="#difference">The difference</a><a href="#product">How it helps</a><a href="#how">How it works</a><a href="/faq">FAQ</a></div>
-        <div class="f-col"><h5>Company</h5>
-          <a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
-      </div>
+      <p class="f-disclaimer"><b>Independent exam preparation.</b> ObMob is not affiliated with, sponsored by, or endorsed by the American Board of Obstetrics &amp; Gynecology (ABOG), ACOG, or any certifying body. It processes de-identified information only and is not a medical-advice service.</p>
     </div>
-    <p class="disclaimer">
-      <b>Independence notice.</b> OBMOB is an independent exam-preparation product. It is <b>not affiliated with, sponsored by, or endorsed by</b> the American Board of Obstetrics &amp; Gynecology (ABOG) or any certifying body. "ABOG" and "OB/GYN Oral Certifying Exam" are referenced for descriptive purposes only. OBMOB processes <b>de-identified information only</b> and is not a medical-advice service. Product name and seal are provisional and shown for design preview.
-    </p>
-    <p style="margin-top:18px;color:#5E748E;color:#5E748E">© 2026 OBMOB. A design preview — figures describe the exam, not product performance.</p>
+    <div class="f-row f-bottom">
+      <div class="f-copy">&copy; 2026 ObMob, LLC &nbsp;&middot;&nbsp; <span class="f-note">Figures describe the exam, not product performance.</span></div>
+      <nav class="f-links">
+        <a href="/about">About</a>
+        <a href="/faq">FAQ</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
   </div>
 </footer>
 
@@ -481,7 +499,7 @@
   .wl-overlay.open{display:flex}
   .wl-card{background:#fff;border-radius:18px;max-width:460px;width:100%;padding:34px 32px;box-shadow:0 24px 60px rgba(14,39,64,.35);position:relative;animation:wlIn .22s ease}
   @keyframes wlIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  .wl-close{position:absolute;top:12px;right:15px;background:none;border:0;font-size:26px;line-height:1;color:#7E8D9C;cursor:pointer}
+  .wl-close{position:absolute;top:12px;right:15px;background:none;border:0;font-size:26px;line-height:1;color:var(--muted);cursor:pointer}
   .wl-card .eyebrow{color:#1F7A70}
   .wl-card h2{font-family:'Newsreader',Georgia,serif;font-weight:500;color:#13314C;font-size:27px;margin:8px 0 10px;line-height:1.15}
   .wl-card p{color:#41566B;font-size:15px;line-height:1.6;margin:0}
@@ -493,7 +511,7 @@
   .wl-msg{font-size:14px;padding:11px 14px;border-radius:9px;margin:6px 0 0;line-height:1.5}
   .wl-msg.ok{background:#E4F3F1;color:#1F7A70;border:1px solid #2FA89B}
   .wl-msg.err{background:#FBEAEA;color:#B23B3B;border:1px solid #E0A3A3}
-  .wl-fine{font-size:11.5px;color:#7E8D9C;margin-top:9px}
+  .wl-fine{font-size:11.5px;color:var(--muted);margin-top:9px}
 </style>
 <div id="waitlist" class="wl-overlay" aria-hidden="true">
   <div class="wl-card" role="dialog" aria-modal="true" aria-labelledby="wl-title">
