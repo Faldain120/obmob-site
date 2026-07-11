@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Pricing section — preview harness · ObMob</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ─── Brand tokens (copied verbatim from index.html :root) ─────────── */
+  :root{
+    --navy:#13314C; --navy-deep:#0E2740; --navy-mid:#2A547C;
+    --navy-soft:#EAF0F6; --navy-line:#22456A;
+    --teal:#2FA89B; --teal-deep:#1F7A70; --teal-bright:#3FB9AD; --teal-cta:#1E8377; --teal-soft:#E4F3F1;
+    --canvas:#F6F8FB; --surface:#FFFFFF;
+    --ink:#14283A; --ink-2:#41566B; --muted:#626F7B; --line:#E4E9EF;
+    --gold:#C29A4A; --gold-soft:#F6EFDD;
+    --serif:'Newsreader',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+    --col:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--canvas);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.5px;line-height:1.12;color:var(--navy)}
+  em{font-style:italic;color:var(--teal-deep);font-weight:500}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--col);margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;color:var(--muted)}
+  section{padding:88px 0}
+  .sec-head{max-width:680px;margin-bottom:40px}
+  .sec-head h2{font-size:40px;margin:14px 0 0}
+  .sec-head p{font-size:18px;color:var(--ink-2);margin-top:16px;max-width:54ch}
+
+  /* ─── Buttons (verbatim from index.html) ──────────────────────────── */
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14px;
+    padding:13px 22px;border-radius:9px;border:1px solid transparent;cursor:pointer;transition:.18s ease;white-space:nowrap}
+  .btn-primary{background:var(--teal-cta);color:#fff!important;box-shadow:0 1px 2px rgba(19,49,76,.12),0 10px 26px rgba(47,168,155,.28)}
+  .btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--navy)}
+  .btn-ghost:hover{border-color:var(--navy-mid);background:#fff}
+  .btn .arr{transition:transform .18s ease}
+  .btn:hover .arr{transform:translateX(3px)}
+
+  /* ─── Pricing (reuses index.html .pricing/.tier scaffold) ─────────── */
+  .pricing{background:var(--navy-soft)}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  @media(max-width:860px){.tiers{grid-template-columns:1fr}}
+  .tier{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 26px;display:flex;flex-direction:column}
+  .tier.feature{border:1.5px solid var(--teal);box-shadow:0 18px 50px rgba(47,168,155,.18);position:relative}
+  .tier.feature .badge{position:absolute;top:-12px;left:26px;background:var(--teal);color:#fff;font-size:10.5px;
+    font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .tier .tname{font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--muted)}
+  .tier .price{font-family:var(--serif);font-size:42px;color:var(--navy);margin:12px 0 2px;line-height:1}
+  .tier .price small{font-size:15px;color:var(--muted);font-family:var(--sans);font-weight:500}
+  .tier .yr{font-size:13px;color:var(--ink-2);min-height:19px}
+  /* center the price header (name · price · savings · billing line); feature list stays left */
+  .tier .tname,.tier .price,.tier .yr{text-align:center}
+  .tier .tier-save{align-self:center}
+  .tier ul{list-style:none;margin:22px 0 26px;flex:1}
+  .tier li{font-size:14px;color:var(--ink-2);padding:8px 0 8px 26px;position:relative}
+  .tier li.lead{color:var(--navy);font-weight:600;padding-left:0}
+  .tier li.lead::before{display:none}
+  .tier li .up{color:var(--teal-deep);font-weight:700;font-style:normal;padding:0 3px}
+  .tier li::before{content:"";position:absolute;left:0;top:13px;width:13px;height:7px;border-left:2px solid var(--teal);
+    border-bottom:2px solid var(--teal);transform:rotate(-45deg)}
+  .tier .btn{justify-content:center;width:100%}
+
+  /* ─── Billing toggle (new) ────────────────────────────────────────── */
+  .bt-wrap{text-align:center;margin-bottom:38px}
+  .billing-toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px;gap:4px;
+    box-shadow:0 1px 2px rgba(19,49,76,.05)}
+  .bt-opt{font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--ink-2);background:transparent;border:0;cursor:pointer;
+    padding:9px 18px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;transition:.18s ease}
+  .bt-opt:hover{color:var(--navy)}
+  .bt-opt.active{background:var(--teal-cta);color:#fff;box-shadow:0 1px 2px rgba(19,49,76,.12),0 6px 16px rgba(47,168,155,.24)}
+  .bt-opt.active:hover{color:#fff}
+  .bt-save{font-size:11px;font-weight:700;letter-spacing:.3px;padding:2px 7px;border-radius:999px;background:var(--gold-soft);color:#8a6a24}
+  .bt-opt.active .bt-save{background:rgba(255,255,255,.22);color:#fff}
+  /* per-tier quarterly savings badge — only visible when Quarterly is active */
+  .tier-save{display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#8a6a24;
+    background:var(--gold-soft);border-radius:999px;padding:4px 11px;margin:0 0 8px}
+  .tier-save.show{display:inline-flex}
+  .tier-save b{color:#6f531a;font-weight:700}
+
+  .pricing-note{text-align:center;font-size:13px;color:var(--muted);margin-top:30px;max-width:60ch;
+    margin-left:auto;margin-right:auto;line-height:1.7}
+  .pricing-note b{color:var(--ink-2);font-weight:600}
+
+  /* harness chrome only — NOT part of the section */
+  .harness-bar{background:var(--navy-deep);color:#CFE0EC;font-size:12.5px;padding:10px 28px;text-align:center;
+    font-family:var(--sans);letter-spacing:.2px}
+  .harness-bar b{color:#3FB9AD}
+</style>
+</head>
+<body>
+
+<div class="harness-bar">PREVIEW HARNESS · <b>pricing section</b> as it will appear on obmob.ai (between FAQ and the CTA band). Toggle Monthly⇄Quarterly to see the price swap. Resize the window to check mobile stacking.</div>
+
+<!-- ─── PRICING (this is the block that will be inserted into index.html) ─── -->
+<section id="pricing" class="pricing">
+  <div class="wrap">
+    <div class="sec-head" style="max-width:640px;margin-left:auto;margin-right:auto;text-align:center">
+      <span class="eyebrow">Pricing</span>
+      <h2>Start free — go all in when it <em>counts</em>.</h2>
+      <p style="margin-left:auto;margin-right:auto">Begin with 3 mock orals on your own cases. Upgrade when you're drilling every day before the exam.</p>
+    </div>
+
+    <div class="bt-wrap">
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <button type="button" class="bt-opt active" data-period="m" aria-pressed="true">Monthly</button>
+        <button type="button" class="bt-opt" data-period="q" aria-pressed="false">Quarterly <span class="bt-save">save ~5%</span></button>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <!-- FREE -->
+      <div class="tier">
+        <div class="tname">Free</div>
+        <div class="price">$0</div>
+        <div class="yr">No card required</div>
+        <ul>
+          <li class="lead">To try it out</li>
+          <li>3 voice mock orals on your own cases</li>
+          <li><b>Unlimited</b> Rapid Fire drills</li>
+          <li>One-time study plan</li>
+          <li>Full scorecard after every case</li>
+        </ul>
+        <a class="btn btn-ghost" href="#waitlist">Get early access <span class="arr">&rarr;</span></a>
+      </div>
+
+      <!-- PRO -->
+      <div class="tier">
+        <div class="tname">Pro</div>
+        <div class="price"><span data-m="$79" data-q="$225">$79</span><small data-m="/month" data-q="/quarter">/month</small></div>
+        <div class="tier-save">Save <b>$12</b>/qtr · 5% off</div>
+        <div class="yr" data-m="Billed monthly · cancel anytime" data-q="≈ $75/mo · billed quarterly">Billed monthly · cancel anytime</div>
+        <ul>
+          <li class="lead">For steady, daily practice</li>
+          <li>Everything in Free, plus:</li>
+          <li><b>60</b> voice mock orals / month</li>
+          <li>Unlimited text mock orals</li>
+          <li>Model answers + delivery notes</li>
+          <li>Adaptive monthly study plan</li>
+        </ul>
+        <a class="btn btn-ghost" href="#waitlist">Get early access <span class="arr">&rarr;</span></a>
+      </div>
+
+      <!-- PREMIUM (feature) -->
+      <div class="tier feature">
+        <span class="badge">Recommended</span>
+        <div class="tname">Premium</div>
+        <div class="price"><span data-m="$129" data-q="$365">$129</span><small data-m="/month" data-q="/quarter">/month</small></div>
+        <div class="tier-save">Save <b>$22</b>/qtr · 6% off</div>
+        <div class="yr" data-m="Billed monthly · cancel anytime" data-q="≈ $122/mo · billed quarterly">Billed monthly · cancel anytime</div>
+        <ul>
+          <li class="lead">The full exam-season workout</li>
+          <li>Everything in Pro, plus:</li>
+          <li><b>60</b><span class="up">&rarr;</span><b>90</b> voice mock orals / month</li>
+          <li><b>Comprehensive exams</b> — a full simulated oral (6 / month)</li>
+          <li>Adaptive study plan: monthly <span class="up">&rarr;</span> weekly</li>
+        </ul>
+        <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">&rarr;</span></a>
+      </div>
+    </div>
+
+    <p class="pricing-note">All plans process <b>de-identified information only</b> — never PHI. Need more than your monthly allowance? Paid plans can add à-la-carte credit top-ups anytime. Prices in USD.</p>
+  </div>
+</section>
+
+<script>
+  (function(){
+    const opts = document.querySelectorAll('.bt-opt');
+    const swaps = document.querySelectorAll('[data-m]');
+    const saves = document.querySelectorAll('.tier-save');
+    function set(p){
+      opts.forEach(o=>{ const on = o.dataset.period===p; o.classList.toggle('active',on); o.setAttribute('aria-pressed', on?'true':'false'); });
+      swaps.forEach(e=>{ e.textContent = (p==='q') ? e.dataset.q : e.dataset.m; });
+      saves.forEach(s=>s.classList.toggle('show', p==='q'));
+    }
+    opts.forEach(o=>o.addEventListener('click',()=>set(o.dataset.period)));
+  })();
+</script>
+</body>
+</html>
