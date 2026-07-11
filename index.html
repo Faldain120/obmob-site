@@ -192,78 +192,115 @@
   .compare .row .t span{color:var(--ink-2);display:block;font-size:13px;margin-top:2px}
   .compare .label{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700;padding:14px 22px;color:var(--muted);background:var(--canvas)}
 
-  /* ─── Pillars ─────────────────────────────────────────────────────── */
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  @media(max-width:860px){.grid3{grid-template-columns:1fr}}
-  .pillar{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px;
-    box-shadow:0 1px 2px rgba(19,49,76,.05),0 10px 30px rgba(19,49,76,.06);transition:.2s ease}
-  .pillar:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(19,49,76,.06),0 18px 44px rgba(19,49,76,.12)}
-  .pillar .tag{display:inline-flex;font-size:11px;font-weight:600;letter-spacing:.4px;padding:5px 11px;border-radius:999px;margin-bottom:16px}
-  .pillar.p-ob .tag{background:var(--ob-soft);color:#b03a55}
-  .pillar.p-gyn .tag{background:var(--gyn-soft);color:#6a52b0}
-  .pillar.p-off .tag{background:var(--office-soft);color:var(--teal-deep)}
-  .pillar h3{font-size:22px}
-  .pillar p{font-size:14.5px;color:var(--ink-2);margin-top:10px}
-  .pillar .ico{width:42px;height:42px;margin-bottom:6px}
-
-  /* ─── Exam-alignment band (positioning statement, not a capability pillar) ── */
-  .exam-band{margin-top:22px;background:linear-gradient(155deg,#13314C 0%,#0E2740 100%);color:#fff;
-    border-radius:16px;padding:30px 34px;display:flex;align-items:center;gap:26px;
-    box-shadow:0 1px 2px rgba(19,49,76,.06),0 18px 44px rgba(19,49,76,.16)}
+  /* ═══ How it works - combined swipe carousel (phone screens + steps + bulletin calendars) ═══ */
+  /* phone frame (shared) */
+  .phone{position:relative;width:288px;background:#0a0e14;border-radius:44px;padding:12px;box-shadow:0 40px 90px rgba(8,22,38,.42),inset 0 0 0 1px rgba(255,255,255,.06)}
+  .phone-notch{position:absolute;top:23px;left:50%;transform:translateX(-50%);width:94px;height:24px;background:#0a0e14;border-radius:16px;z-index:6}
+  .phone-screen{position:relative;border-radius:32px;overflow:hidden;background:#f6f8f8;height:560px}
+  .app-screen{padding:44px 14px 18px;color:#13302c;height:100%;display:flex;flex-direction:column}
+  .as-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px}
+  .as-eyebrow{font-size:9px;letter-spacing:1.3px;text-transform:uppercase;font-weight:700;color:#2a8c82}
+  .as-chip{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap}
+  .as-chip.blue{color:#1f6feb;border:1px solid rgba(31,111,235,.4);background:rgba(31,111,235,.10)}
+  .as-chip.gold{color:#b07d10;border:1px solid rgba(210,153,34,.42);background:rgba(210,153,34,.12)}
+  /* screen 1 - upload */
+  .up-drop{border:1.6px dashed #c4d0ce;border-radius:14px;background:#fff;padding:22px 16px;text-align:center;margin-bottom:16px}
+  .up-ico{width:38px;height:38px;margin:0 auto 10px;color:#2a8c82}
+  .up-t{font-family:var(--serif);font-size:15px;color:#13302c;line-height:1.3}
+  .up-s{font-size:10.5px;color:#7c8b88;margin-top:5px;letter-spacing:.2px}
+  .up-note{font-size:10px;letter-spacing:.8px;text-transform:uppercase;font-weight:700;color:#7c8b88;margin:2px 2px 10px}
+  .up-row{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid #e7edec;border-radius:11px;padding:11px 13px;margin-bottom:9px;box-shadow:0 1px 2px rgba(19,48,44,.04)}
+  .up-dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .up-dot.ob{background:#1f6feb}.up-dot.gyn{background:#9b7be8}.up-dot.off{background:#2a8c82}
+  .up-name{font-size:12.5px;font-weight:600;color:#13302c}
+  .up-n{margin-left:auto;font-size:11.5px;color:#5c6b68}
+  .up-ck{width:16px;height:16px;color:#2a8c82;flex:none}
+  /* screen 2 - your case */
+  .as-title{font-family:var(--serif);font-size:15px;color:#13302c;line-height:1.28;margin-bottom:9px}
+  .as-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;grid-auto-rows:1fr}
+  .as-box{background:#fff;border:1px solid #e7edec;border-radius:12px;padding:10px 11px;box-shadow:0 1px 2px rgba(19,48,44,.05),0 9px 20px rgba(19,48,44,.10)}
+  .as-ph{font-size:8px;letter-spacing:.4px;text-transform:uppercase;font-weight:700;margin-bottom:6px;line-height:1.3}
+  .as-ph.teal{color:#2a8c82}.as-ph.gold{color:#d29922}
+  .as-box ul{list-style:none;margin:0;padding:0}.as-box li{font-size:11px;color:#13302c;line-height:1.5}
+  .as-bottom{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .as-status{text-align:center;font-size:10.5px;color:#3c504c;margin:0 0 10px}
+  .as-orb{position:relative;margin:0 auto;width:104px;height:104px;display:grid;place-items:center;background:radial-gradient(circle,rgba(47,168,155,.15),transparent 60%)}
+  .as-orb::before,.as-orb::after{content:"";position:absolute;width:86px;height:86px;border-radius:50%;border:2px solid rgba(47,168,155,.6);animation:ping 2.4s ease-out infinite}
+  .as-orb::after{animation-delay:1.2s}
+  .orb-seal{width:82px;height:82px;position:relative;z-index:2}
+  @keyframes ping{0%{transform:scale(.96);opacity:.75}70%{opacity:0}100%{transform:scale(1.5);opacity:0}}
+  .as-speaking{text-align:center;font-size:10.5px;font-weight:600;color:#2a8c82;margin-top:11px}
+  /* screen 3 - scorecard */
+  .sc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:4px}
+  .sc-case{font-size:9px;color:#5c6b68;line-height:1.35;flex:1}
+  .sc-score{font-family:var(--serif);font-size:20px;font-weight:600;color:#1f8a5b;line-height:1;flex:none}
+  .sc-score small{font-size:10px;color:#9aa6a3;font-family:var(--sans);font-weight:500}
+  .sc-radar{width:142px;height:auto;display:block;margin:2px auto 3px}
+  .sc-lbl{font-size:7.5px;letter-spacing:.7px;text-transform:uppercase;font-weight:700;color:#7c8b88;margin:9px 0 4px}
+  .sc-fr a{display:flex;align-items:center;gap:4px;font-size:9.5px;font-weight:600;color:#1f7a70;line-height:1.3;margin-bottom:3px}
+  .sc-topics{display:flex;flex-wrap:wrap;gap:5px}
+  .sc-topic{font-size:8.5px;font-weight:600;color:#3c504c;border:1px solid #dbe4e2;border-radius:999px;padding:3px 8px}
+  .sc-topic b{color:#1f8a5b;margin-left:2px}
+  .sc-body{font-size:9px;color:#41514e;line-height:1.5}
+  .sc-body.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .sc-liab{margin-top:9px;padding-top:8px;border-top:1px solid #e2e9e7;font-size:8px;color:#859390;line-height:1.5}
+  .sc-liab b{color:#5c6b68}
+  /* section layout: phone (left, swaps) + right column (static header + swiping copy) */
+  .hiw-2col{display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:stretch;max-width:940px;margin:0 auto}
+  .hiw-phone-stage{position:relative;width:288px;height:560px;flex:none}
+  .hiw-phone-slide{position:absolute;inset:0;transform:translateX(46px);opacity:0;transition:transform .7s cubic-bezier(.4,0,.15,1),opacity .55s ease}
+  .hiw-phone-slide.active{transform:translateX(0);opacity:1}
+  .hiw-phone-slide.exit{transform:translateX(-46px);opacity:0}
+  .hiw-right{display:flex;flex-direction:column;justify-content:flex-start}
+  .hiw-head{position:relative;z-index:2}
+  .hiw-head h2{font-size:34px;margin:12px 0 0}
+  .hiw-head p{font-size:17px;color:var(--ink-2);margin-top:12px;max-width:40ch}
+  .hiw-copy-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:48px}
+  .hiw-copy-stage{position:relative;height:150px}
+  .hiw-copy-slide{position:absolute;inset:0;transform:translateX(52px);opacity:0;transition:transform .7s cubic-bezier(.4,0,.15,1),opacity .5s ease}
+  .hiw-copy-slide.active{transform:translateX(0);opacity:1}
+  .hiw-copy-slide.exit{transform:translateX(-52px);opacity:0}
+  .hiw-copy-slide .num{display:inline-grid;place-items:center;font-family:var(--serif);font-size:14px;font-weight:600;color:var(--teal-deep);width:34px;height:34px;border:1.5px solid var(--teal);border-radius:50%;margin-bottom:13px}
+  .hiw-copy-slide h3{font-size:23px}
+  .hiw-copy-slide p{font-size:16px;color:var(--ink-2);margin-top:9px;max-width:38ch}
+  .hiw-dots{display:flex;gap:10px;margin-top:16px}
+  .hiw-dots span{width:32px;height:3px;border-radius:2px;background:var(--line);cursor:pointer;transition:background .4s,width .4s}
+  .hiw-dots span.active{background:var(--teal);width:50px}
+  /* exam-band (static closer) + bulletin calendars */
+  .exam-band{margin-top:52px;background:linear-gradient(155deg,#13314C 0%,#0E2740 100%);color:#fff;border-radius:16px;padding:30px 34px;display:flex;align-items:center;gap:26px;box-shadow:0 1px 2px rgba(19,49,76,.06),0 18px 44px rgba(19,49,76,.16)}
   .exam-band .eb-ico{flex:none;width:46px;height:46px}
   .exam-band .eb-body{flex:1;min-width:0}
   .exam-band .eyebrow{color:var(--teal-bright)}
-  .exam-band h3{color:#fff;font-size:24px;margin:8px 0 0}
-  .exam-band h3 em{color:var(--teal-bright)}
+  .exam-band h3{color:#fff;font-size:23px;margin:8px 0 0}.exam-band h3 em{color:var(--teal-bright)}
   .exam-band p{font-size:15px;color:#CFE0EC;margin-top:9px;max-width:64ch}
-  .exam-band .eb-badge{flex:none;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
-    letter-spacing:.3px;color:var(--gold);background:rgba(194,154,74,.13);border:1px solid rgba(194,154,74,.32);
-    padding:9px 14px;border-radius:999px;white-space:nowrap}
-  @media(max-width:760px){.exam-band{flex-direction:column;align-items:flex-start;gap:18px;padding:26px 24px}}
-
-  /* ─── How it works ────────────────────────────────────────────────── */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:step}
-  @media(max-width:860px){.steps{grid-template-columns:1fr}}
-  .step{position:relative;padding-top:18px}
-  .step .num{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--teal-deep);
-    width:34px;height:34px;border:1.5px solid var(--teal);border-radius:50%;display:grid;place-items:center;margin-bottom:16px}
-  .step h3{font-size:20px}.step p{font-size:14.5px;color:var(--ink-2);margin-top:8px}
-  /* how-it-works 2-col: phone mockup beside the vertical steps */
-  .how-split{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;margin-top:8px}
-  .how-steps{display:flex;flex-direction:column;gap:24px}
-  .how-steps .step{padding-top:0}
-  @media(max-width:820px){.how-split{grid-template-columns:1fr;gap:38px;justify-items:center}.how-steps{max-width:520px;width:100%}}
-
-  /* ─── Phone mockup (ported from the trial page; light-theme app screen) ─── */
-  .phone{position:relative;width:300px;margin:0 auto;background:#0a0e14;border-radius:46px;padding:13px;
-    box-shadow:0 50px 100px rgba(8,22,38,.4),inset 0 0 0 1px rgba(255,255,255,.06)}
-  .phone-notch{position:absolute;top:25px;left:50%;transform:translateX(-50%);width:98px;height:25px;background:#0a0e14;border-radius:16px;z-index:6}
-  .phone-screen{position:relative;border-radius:33px;overflow:hidden;background:#f6f8f8;height:600px}
-  .app-screen{padding:46px 14px 20px;color:#13302c;height:100%;display:flex;flex-direction:column}
-  .as-bottom{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .as-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 9px}
-  .as-eyebrow{font-size:9px;letter-spacing:1.3px;text-transform:uppercase;font-weight:700;color:#2a8c82}
-  .as-chip{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:#1f6feb;border:1px solid rgba(31,111,235,.4);background:rgba(31,111,235,.10);border-radius:999px;padding:3px 10px 3px 9px;white-space:nowrap}
-  .as-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#1f6feb}
-  .as-title{font-family:var(--serif);font-size:15px;color:#13302c;line-height:1.28;margin-bottom:9px}
-  .as-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;grid-auto-rows:1fr}
-  .as-box{background:#fff;border:1px solid #e7edec;border-radius:12px;padding:10px 11px;
-    box-shadow:0 1px 2px rgba(19,48,44,.05),0 9px 20px rgba(19,48,44,.11)}
-  .as-ph{font-size:8px;letter-spacing:.4px;text-transform:uppercase;font-weight:700;margin-bottom:6px;line-height:1.3}
-  .as-ph.teal{color:#2a8c82}
-  .as-ph.gold{color:#d29922}
-  .as-box ul{list-style:none;margin:0;padding:0}
-  .as-box li{font-size:11px;color:#13302c;line-height:1.5}
-  .as-status{text-align:center;font-size:11px;color:#3c504c;margin:0 0 12px}
-  .as-orb{position:relative;margin:0 auto;width:112px;height:112px;display:grid;place-items:center;
-    background:radial-gradient(circle,rgba(47,168,155,.15),transparent 60%)}
-  .as-orb::before,.as-orb::after{content:"";position:absolute;width:92px;height:92px;border-radius:50%;
-    border:2px solid rgba(47,168,155,.6);animation:ping 2.4s ease-out infinite}
-  .as-orb::after{animation-delay:1.2s}
-  .orb-seal{width:88px;height:88px;position:relative;z-index:2}
-  @keyframes ping{0%{transform:scale(.96);opacity:.75}70%{opacity:0}100%{transform:scale(1.5);opacity:0}}
-  .as-speaking{text-align:center;font-size:11px;font-weight:600;color:#2a8c82;margin-top:13px}
-  @media(prefers-reduced-motion:reduce){.as-orb::before,.as-orb::after{animation:none}}
+  .exam-band .eb-cals{flex:none;display:flex;gap:11px}
+  .exam-band .cal{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);border-radius:10px;padding:9px 11px 8px;width:136px}
+  .exam-band .cal.now{border-color:rgba(194,154,74,.45)}
+  .exam-band .cal-h{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px}
+  .exam-band .cal-m{font-family:var(--serif);font-size:12px;font-weight:600;color:#fff;line-height:1;white-space:nowrap}
+  .exam-band .cal-tag{display:inline-flex;align-items:center;justify-content:center;font-weight:700;border-radius:999px}
+  .exam-band .cal-tag.done{width:15px;height:15px;background:var(--teal-bright);color:#0e2740;font-size:9px}
+  .exam-band .cal-tag.pending{padding:2px 6px;font-size:8px;letter-spacing:.3px;color:var(--gold);border:1px solid rgba(194,154,74,.5)}
+  .exam-band .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;text-align:center}
+  .exam-band .cal-grid .wd{font-size:5.5px;font-weight:700;color:#7e93a8;padding-bottom:1px}
+  .exam-band .cal-grid .d{font-size:6.5px;color:#aebfd0;line-height:1.55;border-radius:3px}
+  .exam-band .cal-grid .d.empty{color:transparent}
+  .exam-band .cal-grid .d.hi{background:var(--teal-bright);color:#0e2740;font-weight:700}
+  .exam-band .cal-grid .d.hi.pending{background:transparent;color:var(--gold);border:1px solid var(--gold);font-weight:700}
+  .exam-band .cal-cap{margin-top:6px;font-size:8.5px;font-weight:600;letter-spacing:.2px;color:#9fb2c6;text-align:center}
+  @media(prefers-reduced-motion:reduce){.as-orb::before,.as-orb::after{animation:none}.hiw-phone-slide,.hiw-copy-slide{transition:opacity .4s ease}}
+  @media(max-width:860px){
+    .hiw-2col{grid-template-columns:1fr;gap:24px;justify-items:center;text-align:center;max-width:420px}
+    .hiw-head{text-align:center}
+    .hiw-head p{margin-left:auto;margin-right:auto}
+    .hiw-right{width:100%;align-items:center}
+    .hiw-copy-wrap{flex:none;padding-bottom:0;justify-content:flex-start;width:100%}
+    .hiw-copy-stage{margin-top:14px}
+    .hiw-copy-slide p{margin-left:auto;margin-right:auto}
+    .hiw-dots{justify-content:center}
+    .exam-band{flex-direction:column;align-items:flex-start;gap:18px;padding:26px 24px}
+    .exam-band .eb-cals{flex-wrap:wrap}
+  }
 
   /* ─── Pricing ─────────────────────────────────────────────────────── */
   .pricing{background:var(--navy-soft)}
@@ -397,7 +434,6 @@
     </a>
     <nav class="nav-links">
       <a href="#difference">The difference</a>
-      <a href="#product">How it helps</a>
       <a href="#how">How it works</a>
       <a href="#faq">FAQ</a>
       <a href="#pricing">Pricing</a>
@@ -460,33 +496,121 @@
  </div>
 </section>
 
-<!-- ─── PILLARS ─────────────────────────────────────────────────────── -->
-<section id="product" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<!-- ─── HOW IT WORKS (combined: what it does + the 3 steps, as a swipe carousel) ─── -->
+<section id="how" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <h2>Three ways it gets you <em>ready</em>.</h2>
-      <p>One companion for the whole road to the oral: organize, rehearse, and close your gaps.</p>
+    <div class="hiw-2col">
+      <!-- LEFT: phone carousel (swaps screens) -->
+      <div class="hiw-phone-stage">
+        <!-- slide 0: upload -->
+        <div class="hiw-phone-slide" data-index="0">
+          <div class="phone"><div class="phone-notch"></div><div class="phone-screen"><div class="app-screen">
+            <div class="as-head"><span class="as-eyebrow">Your case list</span><span class="as-chip blue">Import</span></div>
+            <div class="up-drop">
+              <svg class="up-ico" viewBox="0 0 40 40" fill="none"><path d="M20 26V10m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 26v4a2 2 0 002 2h20a2 2 0 002-2v-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+              <div class="up-t">Import your de-identified list</div>
+              <div class="up-s">CSV or PDF · never any PHI</div>
+            </div>
+            <div class="up-note">Organized in seconds</div>
+            <div class="up-row"><span class="up-dot ob"></span><span class="up-name">Obstetrics</span><span class="up-n">6 cases</span><svg class="up-ck" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="up-row"><span class="up-dot gyn"></span><span class="up-name">Gynecology</span><span class="up-n">4 cases</span><svg class="up-ck" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="up-row"><span class="up-dot off"></span><span class="up-name">Office</span><span class="up-n">2 cases</span><svg class="up-ck" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div></div></div>
+        </div>
+        <!-- slide 1: your case -->
+        <div class="hiw-phone-slide" data-index="1">
+          <div class="phone"><div class="phone-notch"></div><div class="phone-screen"><div class="app-screen">
+            <div class="as-head"><span class="as-eyebrow">Your case</span><span class="as-chip blue">Obstetrics</span></div>
+            <div class="as-title">33-year-old G1P0 at 37 weeks with Hx of alcoholism.</div>
+            <div class="as-grid">
+              <div class="as-box"><div class="as-ph teal">Antepartum complications</div><ul><li>Status post rehab</li><li>Anxiety/depression</li><li>Gestational hypertension</li></ul></div>
+              <div class="as-box"><div class="as-ph gold">Delivery / Postpartum</div><ul><li>Persistent fetal bradycardia</li></ul></div>
+              <div class="as-box"><div class="as-ph teal">Operative procedures</div><ul><li>Nutritional counseling</li><li>Induction of labor</li><li>Emergency CD</li></ul></div>
+              <div class="as-box"><div class="as-ph gold">Newborn</div><ul><li>wt 2450g, Apgar 8/9</li></ul></div>
+            </div>
+            <div class="as-bottom">
+              <div class="as-status">Wrapping up. Your scorecard is being prepared.</div>
+              <div class="as-orb">
+                <svg class="orb-seal" viewBox="0 0 100 100" aria-label="OBMOB seal">
+                  <circle cx="50" cy="50" r="48" fill="none" stroke="#C29A4A" stroke-width=".8"/>
+                  <circle cx="50" cy="50" r="46" fill="none" stroke="#13314C" stroke-width="2.4"/>
+                  <circle cx="50" cy="50" r="41.6" fill="none" stroke="#2FA89B" stroke-width="1.5" stroke-dasharray=".5 2.45" stroke-linecap="round"/>
+                  <circle cx="50" cy="50" r="37" fill="none" stroke="#13314C" stroke-width="1"/>
+                  <circle cx="50" cy="50" r="33.6" fill="none" stroke="#2FA89B" stroke-width="1.7"/>
+                  <text x="50" y="61.5" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-weight="600" font-size="31" letter-spacing="-1" fill="#13314C">OB</text>
+                  <rect x="41.5" y="65.4" width="17" height="1.3" rx=".6" fill="#2FA89B"/>
+                </svg>
+              </div>
+              <div class="as-speaking">🔊 Examiner is speaking · mic off</div>
+            </div>
+          </div></div></div>
+        </div>
+        <!-- slide 2: scorecard -->
+        <div class="hiw-phone-slide" data-index="2">
+          <div class="phone"><div class="phone-notch"></div><div class="phone-screen"><div class="app-screen">
+            <div class="as-head"><span class="as-eyebrow">Scorecard</span><span class="as-chip gold">Case complete</span></div>
+            <div class="sc-top">
+              <div class="sc-case">OB · 30-year-old G4P2 at 37w0d · pyelonephritis in pregnancy</div>
+              <div class="sc-score">8.3<small>/10</small></div>
+            </div>
+            <svg class="sc-radar" viewBox="-22 -12 164 152" fill="none">
+              <polygon points="60,14 99.8,37 99.8,83 60,106 20.2,83 20.2,37" stroke="#dbe4e2" stroke-width="1"/>
+              <polygon points="60,29.6 86.3,44.8 86.3,75.2 60,90.4 33.7,75.2 33.7,44.8" stroke="#e6edeb" stroke-width="1"/>
+              <polygon points="60,44.8 73.2,52.4 73.2,67.6 60,75.2 46.8,67.6 46.8,52.4" stroke="#e6edeb" stroke-width="1"/>
+              <g stroke="#e6edeb" stroke-width="1">
+                <line x1="60" y1="60" x2="60" y2="14"/><line x1="60" y1="60" x2="99.8" y2="37"/><line x1="60" y1="60" x2="99.8" y2="83"/>
+                <line x1="60" y1="60" x2="60" y2="106"/><line x1="60" y1="60" x2="20.2" y2="83"/><line x1="60" y1="60" x2="20.2" y2="37"/>
+              </g>
+              <polygon points="60,20.9 91.9,41.6 93.9,79.6 60,100.5 28.1,78.4 28.9,42.05" fill="rgba(42,140,130,.22)" stroke="#2a8c82" stroke-width="1.6" stroke-linejoin="round"/>
+              <g fill="#8a968f" font-family="Inter,sans-serif" font-size="6.4" font-weight="600">
+                <text x="60" y="8" text-anchor="middle">Knowledge</text>
+                <text x="103" y="37" text-anchor="start">Diff.</text>
+                <text x="103" y="86" text-anchor="start">Judgment</text>
+                <text x="60" y="118" text-anchor="middle">Mgmt</text>
+                <text x="17" y="86" text-anchor="end">Comm.</text>
+                <text x="17" y="37" text-anchor="end">Delivery</text>
+              </g>
+            </svg>
+            <div class="sc-lbl">Further reading</div>
+            <div class="sc-fr">
+              <a>ACOG PB 183 · Postpartum Hemorrhage <span>↗</span></a>
+              <a>ACOG PB 227 · Fetal Growth Restriction <span>↗</span></a>
+            </div>
+            <div class="sc-lbl">Topics tested</div>
+            <div class="sc-topics">
+              <span class="sc-topic">Antepartum infections <b>8.0</b></span>
+              <span class="sc-topic">Fetal growth <b>8.5</b></span>
+              <span class="sc-topic">PPH &amp; inversion <b>8.5</b></span>
+            </div>
+            <div class="sc-lbl">Model answer</div>
+            <div class="sc-body clamp">Pyelonephritis in pregnancy: admit for IV hydration and IV antibiotics (ceftriaxone) until afebrile ~24-48h, then a culture-directed oral agent, with nitrofurantoin suppression for the rest of pregnancy given the recurrence risk.</div>
+            <div class="sc-lbl">Strengths</div>
+            <div class="sc-body">Systematic, correctly dosed uterotonic ladder for PPH with escalation to balloon tamponade.</div>
+            <div class="sc-lbl">To improve</div>
+            <div class="sc-body">Didn't state nitrofurantoin's mechanism, or the patient's Bishop score before the induction decision.</div>
+            <div class="sc-liab"><b>Scoring is grounded in credible, verified sources</b> (ACOG, SMFM). Still, this is AI-generated feedback; exam practice, not medical advice.</div>
+          </div></div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: static header + swiping copy -->
+      <div class="hiw-right">
+        <div class="hiw-head">
+          <span class="eyebrow">How it works</span>
+          <h2>From your list to <em>ready</em>.</h2>
+          <p>Three steps: bring your cases, get examined out loud, and see exactly what to fix.</p>
+        </div>
+        <div class="hiw-copy-wrap">
+          <div class="hiw-copy-stage">
+            <div class="hiw-copy-slide" data-index="0"><span class="num">1</span><h3>Bring your list</h3><p>Upload the de-identified list you already keep. It's sorted by content area in seconds.</p></div>
+            <div class="hiw-copy-slide" data-index="1"><span class="num">2</span><h3>The real exam, on demand</h3><p>A voice examiner drills one of your real cases out loud, one question at a time.</p></div>
+            <div class="hiw-copy-slide" data-index="2"><span class="num">3</span><h3>Know exactly what to fix</h3><p>A scorecard after every case, with the model answer and your weakest moments.</p></div>
+          </div>
+          <div class="hiw-dots"><span data-dot="0" class="active"></span><span data-dot="1"></span><span data-dot="2"></span></div>
+        </div>
+      </div>
     </div>
-    <div class="grid3">
-      <div class="pillar p-ob reveal">
-        <svg class="ico" viewBox="0 0 40 40" fill="none"><rect x="6" y="5" width="28" height="30" rx="4" stroke="#D26079" stroke-width="2"/><path d="M12 14h16M12 20h16M12 26h10" stroke="#D26079" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="tag">Case-list companion</span>
-        <h3>Your list, exam-ready</h3>
-        <p>Import your de-identified ABOG case list once. OBMOB organizes it by content area and keeps it ready to drill. No retyping, no PHI.</p>
-      </div>
-      <div class="pillar p-off reveal">
-        <svg class="ico" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="#2FA89B" stroke-width="2"/><path d="M14 20l1 0c1.5 0 2-5 3.5-5s2 10 3.5 10 2-5 3.5-5h1" stroke="#2FA89B" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="tag">Voice-AI examiner</span>
-        <h3>The real exam, on demand</h3>
-        <p>A neutral examiner questions you out loud, one step at a time. It anchors on your case, branches to test breadth, and never tells you you're right.</p>
-      </div>
-      <div class="pillar p-gyn reveal">
-        <svg class="ico" viewBox="0 0 40 40" fill="none"><path d="M20 6l3.5 7 7.7 1.1-5.6 5.4 1.3 7.6L20 30.6 13.1 34.2l1.3-7.6-5.6-5.4 7.7-1.1z" stroke="#8A6FD0" stroke-width="2" stroke-linejoin="round"/></svg>
-        <span class="tag">Adaptive coaching</span>
-        <h3>Know exactly what to fix</h3>
-        <p>After each case: a specific scorecard with the model answer, plus delivery notes: pace, pauses, confidence. Your weak areas drive what you drill next.</p>
-      </div>
-    </div>
+
     <div class="exam-band reveal">
       <svg class="eb-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
         <circle cx="24" cy="24" r="18" stroke="#3FB9AD" stroke-width="2.2"/>
@@ -496,76 +620,19 @@
       <div class="eb-body">
         <span class="eyebrow">Built for the ABOG oral</span>
         <h3>Mapped to the exam, and <em>kept current</em>.</h3>
-        <p>Every case and question is built around ABOG's own content areas, so you rehearse the exam you're actually sitting, not a generic OB/GYN quiz. We re-align to each year's bulletin, so your prep never goes stale.</p>
+        <p>Every case and question is built around ABOG's own content<br>areas, so you rehearse the exam you're actually sitting.<br>We re-align to each year's bulletin.</p>
       </div>
-      <span class="eb-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4" stroke="#C29A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Updated every year
-      </span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── HOW IT WORKS ────────────────────────────────────────────────── -->
-<section id="how">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2>From your list to <em>ready</em> in three steps.</h2>
-    </div>
-    <div class="how-split reveal">
-      <div class="how-phone">
-        <div class="phone">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="app-screen">
-              <div class="as-top">
-                <div class="as-head">
-                  <span class="as-eyebrow">Your case</span>
-                  <span class="as-chip">Obstetrics</span>
-                </div>
-                <div class="as-title">33-year-old G1P0 at 37 weeks with Hx of alcoholism.</div>
-                <div class="as-grid">
-                  <div class="as-box">
-                    <div class="as-ph teal">Antepartum complications</div>
-                    <ul><li>Status post rehab</li><li>Anxiety/depression</li><li>Gestational hypertension</li></ul>
-                  </div>
-                  <div class="as-box">
-                    <div class="as-ph gold">Delivery / Postpartum</div>
-                    <ul><li>Persistent fetal bradycardia</li></ul>
-                  </div>
-                  <div class="as-box">
-                    <div class="as-ph teal">Operative procedures / Treatment</div>
-                    <ul><li>Nutritional counseling</li><li>Induction of labor</li><li>Emergency CD</li></ul>
-                  </div>
-                  <div class="as-box">
-                    <div class="as-ph gold">Newborn</div>
-                    <ul><li>wt 2450g, Apgar 8/9</li></ul>
-                  </div>
-                </div>
-              </div>
-              <div class="as-bottom">
-                <div class="as-status">Wrapping up. Your scorecard is being prepared.</div>
-                <div class="as-orb">
-                  <svg class="orb-seal" viewBox="0 0 100 100" aria-label="OBMOB seal">
-                    <circle cx="50" cy="50" r="48" fill="none" stroke="#C29A4A" stroke-width=".8"/>
-                    <circle cx="50" cy="50" r="46" fill="none" stroke="#13314C" stroke-width="2.4"/>
-                    <circle cx="50" cy="50" r="41.6" fill="none" stroke="#2FA89B" stroke-width="1.5" stroke-dasharray=".5 2.45" stroke-linecap="round"/>
-                    <circle cx="50" cy="50" r="37" fill="none" stroke="#13314C" stroke-width="1"/>
-                    <circle cx="50" cy="50" r="33.6" fill="none" stroke="#2FA89B" stroke-width="1.7"/>
-                    <text x="50" y="61.5" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-weight="600" font-size="31" letter-spacing="-1" fill="#13314C">OB</text>
-                    <rect x="41.5" y="65.4" width="17" height="1.3" rx=".6" fill="#2FA89B"/>
-                  </svg>
-                </div>
-                <div class="as-speaking">🔊 Examiner is speaking · mic off</div>
-              </div>
-            </div>
-          </div>
+      <div class="eb-cals">
+        <div class="cal">
+          <div class="cal-h"><span class="cal-m">Jul 2025</span><span class="cal-tag done">&#10003;</span></div>
+          <div class="cal-grid" data-first="1" data-hi="14"></div>
+          <div class="cal-cap">2026 bulletin</div>
         </div>
-      </div>
-      <div class="how-steps">
-        <div class="step"><div class="num">1</div><h3>Bring your list</h3><p>Upload the de-identified case list you already prepared for ABOG. It's organized by content area in seconds.</p></div>
-        <div class="step"><div class="num">2</div><h3>Get examined</h3><p>Tap "Begin" and speak. The examiner drills one of your real cases out loud, pressing for specifics the way a board examiner does.</p></div>
-        <div class="step"><div class="num">3</div><h3>Close the gap</h3><p>Read your scorecard, see the model answer, and let your weak topics decide tomorrow's session. Repeat until it feels routine.</p></div>
+        <div class="cal now">
+          <div class="cal-h"><span class="cal-m">Jul 2026</span><span class="cal-tag pending">Pending</span></div>
+          <div class="cal-grid" data-first="2" data-hi="14" data-pending="1"></div>
+          <div class="cal-cap">2027 bulletin</div>
+        </div>
       </div>
     </div>
   </div>
@@ -783,6 +850,45 @@
     }
     opts.forEach(o=>o.addEventListener('click',()=>set(o.dataset.period)));
   })();
+
+  // How-it-works carousel - synced right-to-left swipe of phone + copy; header static; loops continuously.
+  (function(){
+    const stage = document.querySelector('.hiw-2col');
+    if(!stage) return;
+    const groups = [Array.from(stage.querySelectorAll('.hiw-phone-slide')), Array.from(stage.querySelectorAll('.hiw-copy-slide'))];
+    const dots = Array.from(document.querySelectorAll('.hiw-dots span'));
+    const n = groups[0].length, HOLD = 3000;
+    let cur = -1, timer = null, running = false, paused = false, started = false;
+    function show(i){
+      const prev = cur; cur = i;
+      groups.forEach(slides => slides.forEach((s,k)=>{
+        if(k===i){
+          if(s.classList.contains('exit')){ s.style.transition='none'; s.classList.remove('exit'); void s.offsetHeight; s.style.transition=''; }
+          s.classList.remove('exit'); s.classList.add('active');
+        } else if(k===prev){ s.classList.remove('active'); s.classList.add('exit'); }
+      }));
+      dots.forEach((d,k)=>d.classList.toggle('active',k===i));
+    }
+    function reset(){ cur=-1; groups.forEach(g=>g.forEach(s=>s.classList.remove('active','exit'))); dots.forEach(d=>d.classList.remove('active')); }
+    function next(){ if(!running||paused) return; timer=setTimeout(()=>{ show((cur+1)%n); next(); }, HOLD); }
+    function start(){ if(!started){ started=true; running=true; reset(); setTimeout(()=>{ show(0); running=true; next(); },200); } else if(!running){ running=true; next(); } }
+    function stop(){ running=false; if(timer){clearTimeout(timer);timer=null;} }
+    dots.forEach((d,k)=>d.addEventListener('click',()=>{ clearTimeout(timer); show(k); if(running) next(); }));
+    stage.addEventListener('mouseenter',()=>{ paused=true; clearTimeout(timer); });
+    stage.addEventListener('mouseleave',()=>{ paused=false; if(running) next(); });
+    if(!('IntersectionObserver' in window)){ show(0); return; }
+    new IntersectionObserver((es)=>es.forEach(e=>{ e.isIntersecting ? start() : stop(); }), {threshold:0}).observe(stage);
+  })();
+
+  // Bulletin mini-calendars (Monday-first). 31 days each; data-first = leading blanks.
+  document.querySelectorAll('.cal-grid[data-first]').forEach(g=>{
+    const first=+g.dataset.first, hi=+g.dataset.hi, pending=g.dataset.pending==='1';
+    let h='';
+    ['M','T','W','T','F','S','S'].forEach(w=>h+='<span class="wd">'+w+'</span>');
+    for(let i=0;i<first;i++) h+='<span class="d empty">.</span>';
+    for(let d=1;d<=31;d++){ h+='<span class="d'+(d===hi?(pending?' hi pending':' hi'):'')+'">'+d+'</span>'; }
+    g.innerHTML=h;
+  });
 
   // Waitlist modal - opens on #waitlist hash; submits to Web3Forms via AJAX
   (function(){
