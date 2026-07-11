@@ -90,7 +90,7 @@
   /* ─── Buttons ─────────────────────────────────────────────────────── */
   .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14px;
     padding:13px 22px;border-radius:9px;border:1px solid transparent;cursor:pointer;transition:.18s ease;white-space:nowrap}
-  .btn-primary{background:var(--teal-cta);color:#fff!important;box-shadow:0 1px 2px rgba(19,49,76,.12),0 10px 26px rgba(47,168,155,.28)}
+  .btn-primary{background:var(--teal-cta);color:#fff!important;box-shadow:0 1px 2px rgba(19,49,76,.12),0 8px 20px rgba(19,49,76,.16)}
   .btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px)}
   .btn-ghost{background:transparent;border-color:var(--line);color:var(--navy)}
   .btn-ghost:hover{border-color:var(--navy-mid);background:#fff}
@@ -161,8 +161,8 @@
   /* ─── Stat strip ──────────────────────────────────────────────────── */
   .stats{background:var(--surface);border-bottom:1px solid var(--line)}
   .stats-in{max-width:var(--col);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(4,1fr)}
-  .stat{padding:30px 24px;border-left:1px solid var(--line)}
-  .stat:first-child{border-left:none;padding-left:0}
+  .stat{padding:30px 24px;border-left:1px solid var(--line);text-align:center}
+  .stat:first-child{border-left:none}
   .stat .n{font-family:var(--serif);font-size:38px;color:var(--navy);line-height:1}
   .stat .n em{color:var(--teal-deep)}
   .stat .l{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:8px}
@@ -313,15 +313,15 @@
   /* ─── Footer (unified, BTK-style) ─────────────────────────────────── */
   .site-footer{background:var(--navy-deep);color:#8497AC;font-size:13.5px}
   .site-footer a{text-decoration:none}
-  .site-footer .f-in{max-width:var(--col);margin:0 auto;padding:40px 28px 34px;border-top:1px solid rgba(255,255,255,.12)}
+  .site-footer .f-in{max-width:var(--col);margin:0 auto;padding:40px 28px 24px;border-top:1px solid rgba(255,255,255,.12)}
   .site-footer .f-row{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
-  .site-footer .f-top{padding-bottom:26px}
+  .site-footer .f-top{padding-bottom:16px}
   .site-footer .f-bottom{padding-top:22px;border-top:1px solid rgba(255,255,255,.08);align-items:center}
   .site-footer .f-brand{display:flex;align-items:center;gap:13px}
   .site-footer .f-brand .wordmark{font-family:var(--serif);font-size:21px;font-weight:500;color:#fff;letter-spacing:.3px;line-height:1}
   .site-footer .f-brand .f-email{display:inline-block;margin-top:5px;font-size:13.5px;color:#A9BBCE}
   .site-footer .f-brand .f-email:hover{color:var(--teal-bright)}
-  .site-footer .f-disclaimer{max-width:560px;text-align:right;font-size:12.5px;line-height:1.7;color:#8497AC}
+  .site-footer .f-disclaimer{max-width:800px;text-align:right;font-size:12.5px;line-height:1.6;color:#8497AC}
   .site-footer .f-disclaimer b{color:#C0D0DF;font-weight:600}
   .site-footer .f-copy{font-size:12.5px;color:#8497AC}
   .site-footer .f-copy .f-note{color:#7E93A8}
@@ -442,8 +442,7 @@
  <div class="wrap">
   <div class="split">
     <div>
-      <span class="eyebrow">The difference</span>
-      <h2 style="font-size:clamp(27px,7.4vw,40px);margin-top:14px">Prepare on <em>your</em> cases,<br/>not someone else's.</h2>
+      <h2 style="font-size:clamp(27px,7.4vw,40px)">Prepare on <em>your</em> cases,<br/>not someone else's.</h2>
       <p style="font-size:18px;color:var(--ink-2);margin-top:18px;max-width:50ch">
         Half of the ABOG oral is built from the de-identified case list <b>you</b> submit. Every other AI prep tool drills you on generic, synthetic scenarios. OBMOB ingests your real list and examines you on the cases you'll actually defend.</p>
       <p style="font-size:15px;color:var(--muted);margin-top:18px;max-width:50ch">
@@ -465,7 +464,6 @@
 <section id="product" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">How it helps</span>
       <h2>Three ways it gets you <em>ready</em>.</h2>
       <p>One companion for the whole road to the oral: organize, rehearse, and close your gaps.</p>
     </div>
@@ -512,7 +510,6 @@
 <section id="how">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">How it works</span>
       <h2>From your list to <em>ready</em> in three steps.</h2>
     </div>
     <div class="how-split reveal">
@@ -578,7 +575,6 @@
 <section id="faq">
   <div class="wrap">
     <div class="sec-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
-      <span class="eyebrow">FAQ</span>
       <h2>Questions, <em>answered</em>.</h2>
       <p style="margin-left:auto;margin-right:auto">Everything you need to know before your first mock oral.</p>
     </div>
@@ -629,7 +625,6 @@
 <section id="pricing" class="pricing">
   <div class="wrap">
     <div class="sec-head reveal" style="max-width:640px;margin-left:auto;margin-right:auto;text-align:center">
-      <span class="eyebrow">Pricing</span>
       <h2>Start free. Go all in when it <em>counts</em>.</h2>
       <p style="margin-left:auto;margin-right:auto">Begin with 3 mock orals on your own cases. Upgrade when you're drilling every day before the exam.</p>
     </div>
@@ -815,8 +810,5 @@
     });
   })();
 </script>
-<!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js"></script>
-<!-- impeccable-live-end -->
 </body>
 </html>
