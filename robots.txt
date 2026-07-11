@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://obmob.ai/sitemap.xml
