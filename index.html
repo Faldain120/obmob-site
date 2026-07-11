@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OBMOB — Walk in already knowing how it feels.</title>
+<title>OBMOB: Walk in already knowing how it feels.</title>
 <meta name="robots" content="noindex,nofollow" />
 <meta name="description" content="OB/GYN ABOG oral-board prep. Drill on your own de-identified case list with a voice-AI examiner. Walk in already knowing how it feels." />
 <link rel="canonical" href="https://obmob.ai/" />
 <!-- Open Graph / Twitter -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="ObMob" />
-<meta property="og:title" content="ObMob — the AI OB/GYN oral-board examiner that drills your own cases" />
-<meta property="og:description" content="Rehearse the ABOG oral out loud. ObMob's AI examiner drills you on your own de-identified case list — the half of the oral no other prep tool covers — plus structured cases, and scores your reasoning." />
+<meta property="og:title" content="ObMob: the AI OB/GYN oral-board examiner that drills your own cases" />
+<meta property="og:description" content="Rehearse the ABOG oral out loud. ObMob's AI examiner drills you on your own de-identified case list, the half of the oral no other prep tool covers, plus structured cases, and scores your reasoning." />
 <meta property="og:url" content="https://obmob.ai/" />
 <meta property="og:image" content="https://obmob.ai/assets/hero-walk.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ObMob — the AI OB/GYN oral-board examiner that drills your own cases" />
-<meta name="twitter:description" content="Rehearse the ABOG oral out loud on your own cases with an AI examiner. Built for the ABOG oral boards — not a generic mock." />
+<meta name="twitter:title" content="ObMob: the AI OB/GYN oral-board examiner that drills your own cases" />
+<meta name="twitter:description" content="Rehearse the ABOG oral out loud on your own cases with an AI examiner. Built for the ABOG oral boards, not a generic mock." />
 <meta name="twitter:image" content="https://obmob.ai/assets/hero-walk.png" />
 <!-- Structured data (Organization + WebSite + SoftwareApplication). Entity text kept in sync with /llms.txt. -->
 <script type="application/ld+json">
@@ -170,7 +170,10 @@
     .stat:nth-child(2){border-top:none}.stat:nth-child(odd){padding-right:18px}}
 
   /* ─── Section scaffold ────────────────────────────────────────────── */
-  section{padding:88px 0}
+  section{padding:72px 0}
+  /* Hairline dividers between the stacked light sections that share the canvas bg (same idiom
+     as the #product band's borders) so each section break reads intentional, not as a void. */
+  #faq,#pricing{border-top:1px solid var(--line)}
   .sec-head{max-width:680px;margin-bottom:48px}
   .sec-head h2{font-size:40px;margin:14px 0 0}
   .sec-head p{font-size:18px;color:var(--ink-2);margin-top:16px;max-width:54ch}
@@ -243,7 +246,7 @@
   .tier li::before{content:"";position:absolute;left:0;top:13px;width:13px;height:7px;border-left:2px solid var(--teal);
     border-bottom:2px solid var(--teal);transform:rotate(-45deg)}
   .tier .btn{justify-content:center;width:100%}
-  /* pricing — billing toggle, savings badge, feature leads, centered header (added w/ pricing re-add) */
+  /* pricing - billing toggle, savings badge, feature leads, centered header (added w/ pricing re-add) */
   .tier .price{line-height:1}
   .tier .yr{min-height:19px}
   .tier .tname,.tier .price,.tier .yr{text-align:center}
@@ -262,12 +265,12 @@
   .tier-save{display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#8a6a24;background:var(--gold-soft);border-radius:999px;padding:4px 11px;margin:0 0 8px}
   .tier-save.show{display:inline-flex}
   .tier-save b{color:#6f531a;font-weight:700}
-  .pricing-note{text-align:center;font-size:13px;color:var(--muted);margin-top:30px;max-width:60ch;margin-left:auto;margin-right:auto;line-height:1.7}
+  .pricing-note{text-align:center;font-size:13px;color:var(--muted);margin-top:30px;line-height:1.7}
   .pricing-note b{color:var(--ink-2);font-weight:600}
 
   /* ─── CTA band ────────────────────────────────────────────────────── */
   .cta-band{background:radial-gradient(900px 420px at 50% 0%,rgba(47,168,155,.2),transparent 62%),
-    linear-gradient(160deg,#13314C,#0E2740);color:#fff;text-align:center}
+    linear-gradient(160deg,#13314C,#0E2740);color:#fff;text-align:center;padding:64px 0}
   .cta-band h2{color:#fff;font-size:44px}.cta-band h2 em{color:var(--teal-bright)}
   .cta-band p{color:#C7D5E2;font-size:18px;margin:18px auto 32px;max-width:46ch}
 
@@ -333,7 +336,7 @@
     <circle cx="32" cy="32" r="23" fill="none" stroke="#13314C" stroke-width=".5" stroke-dasharray="1 3"/>
     <text x="32" y="40" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="20" font-weight="500" fill="#13314C">OB</text>
   </symbol>
-  <!-- Light variant for dark backgrounds (footer) — navy strokes vanish on --navy-deep, so use light strokes. -->
+  <!-- Light variant for dark backgrounds (footer) - navy strokes vanish on --navy-deep, so use light strokes. -->
   <symbol id="obmob-seal-light" viewBox="0 0 64 64">
     <circle cx="32" cy="32" r="30" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
     <circle cx="32" cy="32" r="24" fill="none" stroke="#3FB9AD" stroke-width="1.5"/>
@@ -379,7 +382,7 @@
     <div class="hero-copy">
       <span class="eyebrow on-navy">OB/GYN · ABOG Oral Certifying Exam</span>
       <h1>Walk in already<br/>knowing how it <em>feels</em>.</h1>
-      <p class="sub"><b>Prepare on your cases, not someone else's.</b> An AI voice examiner drills OB/GYN physicians on their own cases — the rigor of the exam room, the calm of a colleague in your corner.</p>
+      <p class="sub"><b>Prepare on your cases, not someone else's.</b> An AI voice examiner drills OB/GYN physicians on their own cases: the rigor of the exam room, the calm of a colleague in your corner.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">→</span></a>
         <a class="btn btn-ghost on-navy" href="#how">See how it works</a>
@@ -393,7 +396,7 @@
   <div class="stats-in">
     <div class="stat reveal"><div class="n">3<em>h</em></div><div class="l">Length of the real oral exam</div></div>
     <div class="stat reveal"><div class="n">50<em>%</em></div><div class="l">Of the exam is your own case list</div></div>
-    <div class="stat reveal"><div class="n">3</div><div class="l">Sections — OB · GYN · Office</div></div>
+    <div class="stat reveal"><div class="n">3</div><div class="l">Sections: OB · GYN · Office</div></div>
     <div class="stat reveal"><div class="n">MD</div><div class="l">Built with a practicing OB/GYN</div></div>
   </div>
 </div>
@@ -408,7 +411,7 @@
       <p style="font-size:18px;color:var(--ink-2);margin-top:18px;max-width:50ch">
         Half of the ABOG oral is built from the de-identified case list <b>you</b> submit. Every other AI prep tool drills you on generic, synthetic scenarios. OBMOB ingests your real list and examines you on the cases you'll actually defend.</p>
       <p style="font-size:15px;color:var(--muted);margin-top:18px;max-width:50ch">
-        You already keep a HIPAA Safe-Harbor de-identified list for ABOG. OBMOB reads that list — no charts, no PHI, nothing new to scrub.</p>
+        You already keep a HIPAA Safe-Harbor de-identified list for ABOG. OBMOB reads that list. No charts, no PHI, nothing new to scrub.</p>
     </div>
     <div class="compare">
       <div class="label">Generic AI examiners</div>
@@ -428,26 +431,26 @@
     <div class="sec-head reveal">
       <span class="eyebrow">How it helps</span>
       <h2>Three ways it gets you <em>ready</em>.</h2>
-      <p>One companion for the whole road to the oral — organize, rehearse, and close your gaps.</p>
+      <p>One companion for the whole road to the oral: organize, rehearse, and close your gaps.</p>
     </div>
     <div class="grid3">
       <div class="pillar p-ob reveal">
         <svg class="ico" viewBox="0 0 40 40" fill="none"><rect x="6" y="5" width="28" height="30" rx="4" stroke="#D26079" stroke-width="2"/><path d="M12 14h16M12 20h16M12 26h10" stroke="#D26079" stroke-width="2" stroke-linecap="round"/></svg>
         <span class="tag">Case-list companion</span>
         <h3>Your list, exam-ready</h3>
-        <p>Import your de-identified ABOG case list once. OBMOB organizes it by content area and keeps it ready to drill — no retyping, no PHI.</p>
+        <p>Import your de-identified ABOG case list once. OBMOB organizes it by content area and keeps it ready to drill. No retyping, no PHI.</p>
       </div>
       <div class="pillar p-off reveal">
         <svg class="ico" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="#2FA89B" stroke-width="2"/><path d="M14 20l1 0c1.5 0 2-5 3.5-5s2 10 3.5 10 2-5 3.5-5h1" stroke="#2FA89B" stroke-width="2" stroke-linecap="round"/></svg>
         <span class="tag">Voice-AI examiner</span>
         <h3>The real exam, on demand</h3>
-        <p>A neutral examiner questions you out loud, one step at a time — anchors on your case, branches to test breadth, and never tells you you're right.</p>
+        <p>A neutral examiner questions you out loud, one step at a time. It anchors on your case, branches to test breadth, and never tells you you're right.</p>
       </div>
       <div class="pillar p-gyn reveal">
         <svg class="ico" viewBox="0 0 40 40" fill="none"><path d="M20 6l3.5 7 7.7 1.1-5.6 5.4 1.3 7.6L20 30.6 13.1 34.2l1.3-7.6-5.6-5.4 7.7-1.1z" stroke="#8A6FD0" stroke-width="2" stroke-linejoin="round"/></svg>
         <span class="tag">Adaptive coaching</span>
         <h3>Know exactly what to fix</h3>
-        <p>After each case: a specific scorecard with the model answer, plus delivery notes — pace, pauses, confidence. Your weak areas drive what you drill next.</p>
+        <p>After each case: a specific scorecard with the model answer, plus delivery notes: pace, pauses, confidence. Your weak areas drive what you drill next.</p>
       </div>
     </div>
     <div class="exam-band reveal">
@@ -458,8 +461,8 @@
       </svg>
       <div class="eb-body">
         <span class="eyebrow">Built for the ABOG oral</span>
-        <h3>Mapped to the exam — and <em>kept current</em>.</h3>
-        <p>Every case and question is built around ABOG's own content areas — you rehearse the exam you're actually sitting, not a generic OB/GYN quiz. We re-align to each year's bulletin, so your prep never goes stale.</p>
+        <h3>Mapped to the exam, and <em>kept current</em>.</h3>
+        <p>Every case and question is built around ABOG's own content areas, so you rehearse the exam you're actually sitting, not a generic OB/GYN quiz. We re-align to each year's bulletin, so your prep never goes stale.</p>
       </div>
       <span class="eb-badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4" stroke="#C29A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -495,7 +498,7 @@
     <div class="faq reveal">
       <details>
         <summary>What is OBMOB?<span class="ic"></span></summary>
-        <div class="ans">OBMOB is AI-powered preparation for the <b>ABOG OB/GYN oral certifying exam</b>. You drill realistic mock orals with a voice-AI examiner — on your own de-identified case list or on structured ABOG-style cases — and get a scorecard after every case. On paid plans you can practice as many times as you want, any time.</div>
+        <div class="ans">OBMOB is AI-powered preparation for the <b>ABOG OB/GYN oral certifying exam</b>. You drill realistic mock orals with a voice-AI examiner, on your own de-identified case list or on structured ABOG-style cases, and get a scorecard after every case. On paid plans you can practice as many times as you want, any time.</div>
       </details>
       <details>
         <summary>Who is it for?<span class="ic"></span></summary>
@@ -503,7 +506,7 @@
       </details>
       <details>
         <summary>How does a mock oral work?<span class="ic"></span></summary>
-        <div class="ans">You start a case — your own or a structured ABOG-style one — and the voice examiner takes you through it <b>one question at a time, with no hints or coaching</b>, just like the real room. Say &ldquo;I&rsquo;m finished&rdquo; (or set a time limit) and your scorecard appears.</div>
+        <div class="ans">You start a case, your own or a structured ABOG-style one, and the voice examiner takes you through it <b>one question at a time, with no hints or coaching</b>, just like the real room. Say &ldquo;I&rsquo;m finished&rdquo; (or set a time limit) and your scorecard appears.</div>
       </details>
       <details>
         <summary>How am I graded?<span class="ic"></span></summary>
@@ -511,18 +514,27 @@
       </details>
       <details>
         <summary>How much does it cost?<span class="ic"></span></summary>
-        <div class="ans">Start <b>free</b> — 3 full voice mock orals on your own cases, no card required. Beyond that, <b>Pro is $79/month</b> and <b>Premium is $129/month</b> (save ~5% paying quarterly) — a fraction of what traditional oral-board courses cost, and you can cancel anytime. See the full plans below.</div>
+        <div class="ans">Start <b>free</b>: 3 full voice mock orals on your own cases, no card required. Beyond that, <b>Pro is $79/month</b> and <b>Premium is $129/month</b> (save ~5% paying quarterly), a fraction of what traditional oral-board courses cost, and you can cancel anytime. See the full plans below.</div>
       </details>
       <details>
         <summary>Is OBMOB kept current with the exam?<span class="ic"></span></summary>
-        <div class="ans">Yes. Every case and question is built around ABOG's published content areas, and we re-align to <b>each year's bulletin</b> — so you're preparing for this year's exam, not last year's. We're independent and reference ABOG's public materials only.</div>
+        <div class="ans">Yes. Every case and question is built around ABOG's published content areas, and we re-align to <b>each year's bulletin</b>, so you're preparing for this year's exam, not last year's. We're independent and reference ABOG's public materials only.</div>
       </details>
       <details>
         <summary>Is OBMOB affiliated with ABOG or ACOG?<span class="ic"></span></summary>
-        <div class="ans">No. OBMOB is an independent exam-prep product, <b>not affiliated with, sponsored by, or endorsed by</b> ABOG, ACOG, or any certifying body. Our cases and grading are aligned with the format and content expectations of the ABOG oral — but we are not connected to them.</div>
+        <div class="ans">No. OBMOB is an independent exam-prep product, <b>not affiliated with, sponsored by, or endorsed by</b> ABOG, ACOG, or any certifying body. Our cases and grading are aligned with the format and content expectations of the ABOG oral, but we are not connected to them.</div>
       </details>
     </div>
     <div class="faq-foot"><a href="/faq">View all FAQs &rarr;</a></div>
+  </div>
+</section>
+
+<!-- ─── CTA BAND ────────────────────────────────────────────────────── -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>The room should be the <em>second</em> time it happens.</h2>
+    <p>Rehearse on your real cases until the oral feels like one you've already passed.</p>
+    <a class="btn btn-primary" href="#waitlist" style="font-size:15px;padding:15px 28px">Get early access <span class="arr">→</span></a>
   </div>
 </section>
 
@@ -531,7 +543,7 @@
   <div class="wrap">
     <div class="sec-head reveal" style="max-width:640px;margin-left:auto;margin-right:auto;text-align:center">
       <span class="eyebrow">Pricing</span>
-      <h2>Start free — go all in when it <em>counts</em>.</h2>
+      <h2>Start free. Go all in when it <em>counts</em>.</h2>
       <p style="margin-left:auto;margin-right:auto">Begin with 3 mock orals on your own cases. Upgrade when you're drilling every day before the exam.</p>
     </div>
 
@@ -586,23 +598,14 @@
           <li class="lead">The full exam-season workout</li>
           <li>Everything in Pro, plus:</li>
           <li><b>60</b><span class="up">&rarr;</span><b>90</b> voice mock orals / month</li>
-          <li><b>Comprehensive exams</b> — a full simulated oral (6 / month)</li>
+          <li><b>Comprehensive exams</b>: a full simulated oral (6 / month)</li>
           <li>Adaptive study plan: monthly <span class="up">&rarr;</span> weekly</li>
         </ul>
         <a class="btn btn-primary" href="#waitlist">Get early access <span class="arr">&rarr;</span></a>
       </div>
     </div>
 
-    <p class="pricing-note reveal">All plans process <b>de-identified information only</b> — never PHI. Need more than your monthly allowance? Paid plans can add à-la-carte credit top-ups anytime. Prices in USD.</p>
-  </div>
-</section>
-
-<!-- ─── CTA BAND ────────────────────────────────────────────────────── -->
-<section class="cta-band">
-  <div class="wrap">
-    <h2>The room should be the <em>second</em> time it happens.</h2>
-    <p>Rehearse on your real cases until the oral feels like one you've already passed.</p>
-    <a class="btn btn-primary" href="#waitlist" style="font-size:15px;padding:15px 28px">Get early access <span class="arr">→</span></a>
+    <p class="pricing-note reveal">All plans process <b>de-identified information only</b>, never PHI. Prices in USD.</p>
   </div>
 </section>
 
@@ -664,7 +667,7 @@
     <button class="wl-close" aria-label="Close" data-wl-close>&times;</button>
     <span class="eyebrow">Early access</span>
     <h2 id="wl-title">Join the waitlist.</h2>
-    <p>We're putting the finishing touches on ObMob. Leave your email and you'll be first in line for early access &mdash; including your <b>3 free mock orals</b> on your own cases.</p>
+    <p>We're putting the finishing touches on ObMob. Leave your email and you'll be first in line for early access, including your <b>3 free mock orals</b> on your own cases.</p>
     <form id="wl-form" class="wl-form">
       <input type="hidden" name="access_key" value="f01d963e-a9c0-4412-b0bd-28de7c209281">
       <input type="hidden" name="subject" value="New ObMob waitlist signup">
@@ -674,18 +677,18 @@
       <button type="submit" class="btn btn-primary wl-submit">Join the waitlist <span class="arr">&rarr;</span></button>
     </form>
     <p class="wl-msg" hidden></p>
-    <p class="wl-fine">No spam &mdash; we'll only email you about early access. ObMob is independent of ABOG.</p>
+    <p class="wl-fine">No spam. We'll only email you about early access. ObMob is independent of ABOG.</p>
   </div>
 </div>
 
 <script>
-  // Scroll reveal — subtle, respects reduced-motion via CSS
+  // Scroll reveal - subtle, respects reduced-motion via CSS
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*70)+'ms'; io.observe(el); });
 
-  // Pricing — monthly⇄quarterly toggle: swaps prices/billing lines + shows per-tier quarterly savings
+  // Pricing - monthly⇄quarterly toggle: swaps prices/billing lines + shows per-tier quarterly savings
   (function(){
     const opts = document.querySelectorAll('.bt-opt');
     if(!opts.length) return;
@@ -699,7 +702,7 @@
     opts.forEach(o=>o.addEventListener('click',()=>set(o.dataset.period)));
   })();
 
-  // Waitlist modal — opens on #waitlist hash; submits to Web3Forms via AJAX
+  // Waitlist modal - opens on #waitlist hash; submits to Web3Forms via AJAX
   (function(){
     const overlay = document.getElementById('waitlist');
     if(!overlay) return;
@@ -719,9 +722,9 @@
         const data=Object.fromEntries(new FormData(form));
         const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
         const json=await res.json();
-        if(json.success){ form.style.display='none'; msg.textContent="You're on the list — we'll be in touch about early access."; msg.className='wl-msg ok'; msg.hidden=false; }
+        if(json.success){ form.style.display='none'; msg.textContent="You're on the list. We'll be in touch about early access."; msg.className='wl-msg ok'; msg.hidden=false; }
         else { throw new Error(json.message||'error'); }
-      }catch(err){ msg.textContent='Sorry — could not submit. Email hello@obmob.ai and we\'ll add you.'; msg.className='wl-msg err'; msg.hidden=false; btn.disabled=false; btn.innerHTML=old; }
+      }catch(err){ msg.textContent='Sorry, could not submit. Email hello@obmob.ai and we\'ll add you.'; msg.className='wl-msg err'; msg.hidden=false; btn.disabled=false; btn.innerHTML=old; }
     });
   })();
 </script>

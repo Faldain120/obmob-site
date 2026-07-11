@@ -2,10 +2,10 @@
    For every .doc block it builds the left "On this page" rail from the page's section
    headings, gives them slug ids, and highlights the active one on scroll (scroll-spy).
    Per-page options on the .doc element:
-     data-toc-sel="<css>"  — which headings are sections (default "article h2")
+     data-toc-sel="<css>"  - which headings are sections (default "article h2")
    Per-heading options:
-     class="no-toc"        — exclude this heading from the rail
-     data-toc="Short label" — use this label in the rail instead of the heading text */
+     class="no-toc"        - exclude this heading from the rail
+     data-toc="Short label" - use this label in the rail instead of the heading text */
 (function () {
   function slug(s) {
     return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "section";
