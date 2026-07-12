@@ -69,7 +69,7 @@
 
   /* ─── Billing toggle (new) ────────────────────────────────────────── */
   .bt-wrap{text-align:center;margin-bottom:38px}
-  .billing-toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px;gap:4px;
+  .billing-toggle{display:inline-flex;flex-wrap:wrap;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px;gap:4px;
     box-shadow:0 1px 2px rgba(19,49,76,.05)}
   .bt-opt{font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--ink-2);background:transparent;border:0;cursor:pointer;
     padding:9px 18px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;transition:.18s ease}
@@ -110,6 +110,7 @@
       <div class="billing-toggle" role="group" aria-label="Billing period">
         <button type="button" class="bt-opt active" data-period="m" aria-pressed="true">Monthly</button>
         <button type="button" class="bt-opt" data-period="q" aria-pressed="false">Quarterly <span class="bt-save">save ~5%</span></button>
+        <button type="button" class="bt-opt" data-period="a" aria-pressed="false">Annual <span class="bt-save">2 mo free</span></button>
       </div>
     </div>
 
@@ -132,9 +133,9 @@
       <!-- PRO -->
       <div class="tier">
         <div class="tname">Pro</div>
-        <div class="price"><span data-m="$79" data-q="$225">$79</span><small data-m="/month" data-q="/quarter">/month</small></div>
-        <div class="tier-save">Save <b>$12</b>/qtr · 5% off</div>
-        <div class="yr" data-m="Billed monthly · cancel anytime" data-q="≈ $75/mo · billed quarterly">Billed monthly · cancel anytime</div>
+        <div class="price"><span data-m="$79" data-q="$225" data-a="$790">$79</span><small data-m="/month" data-q="/quarter" data-a="/year">/month</small></div>
+        <div class="tier-save" data-q="Save <b>$12</b>/qtr · 5% off" data-a="<b>2 months</b> free · save $158/yr">Save <b>$12</b>/qtr · 5% off</div>
+        <div class="yr" data-m="Billed monthly · cancel anytime" data-q="≈ $75/mo · billed quarterly" data-a="≈ $66/mo · billed yearly">Billed monthly · cancel anytime</div>
         <ul>
           <li class="lead">For steady, daily practice</li>
           <li>Everything in Free, plus:</li>
@@ -150,9 +151,9 @@
       <div class="tier feature">
         <span class="badge">Recommended</span>
         <div class="tname">Premium</div>
-        <div class="price"><span data-m="$129" data-q="$365">$129</span><small data-m="/month" data-q="/quarter">/month</small></div>
-        <div class="tier-save">Save <b>$22</b>/qtr · 6% off</div>
-        <div class="yr" data-m="Billed monthly · cancel anytime" data-q="≈ $122/mo · billed quarterly">Billed monthly · cancel anytime</div>
+        <div class="price"><span data-m="$129" data-q="$365" data-a="$1,290">$129</span><small data-m="/month" data-q="/quarter" data-a="/year">/month</small></div>
+        <div class="tier-save" data-q="Save <b>$22</b>/qtr · 6% off" data-a="<b>2 months</b> free · save $258/yr">Save <b>$22</b>/qtr · 6% off</div>
+        <div class="yr" data-m="Billed monthly · cancel anytime" data-q="≈ $122/mo · billed quarterly" data-a="≈ $108/mo · billed yearly">Billed monthly · cancel anytime</div>
         <ul>
           <li class="lead">The full exam-season workout</li>
           <li>Everything in Pro, plus:</li>
@@ -175,8 +176,8 @@
     const saves = document.querySelectorAll('.tier-save');
     function set(p){
       opts.forEach(o=>{ const on = o.dataset.period===p; o.classList.toggle('active',on); o.setAttribute('aria-pressed', on?'true':'false'); });
-      swaps.forEach(e=>{ e.textContent = (p==='q') ? e.dataset.q : e.dataset.m; });
-      saves.forEach(s=>s.classList.toggle('show', p==='q'));
+      swaps.forEach(e=>{ e.textContent = (p==='q') ? e.dataset.q : (p==='a') ? e.dataset.a : e.dataset.m; });
+      saves.forEach(s=>{ const on = p!=='m'; s.classList.toggle('show', on); if(on && s.dataset[p]) s.innerHTML = s.dataset[p]; });
     }
     opts.forEach(o=>o.addEventListener('click',()=>set(o.dataset.period)));
   })();
