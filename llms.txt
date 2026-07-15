@@ -14,7 +14,7 @@
 ## How it works
 - Practice modes: a full single-case Mock Oral, a Comprehensive multi-case oral that mirrors the real exam's structure, and Rapid Fire (a high-yield spoken warm-up).
 - Aligned to ABOG's published exam blueprint and refreshed to the current annual bulletin.
-- Clinical content is reviewed and signed off by a board-certified OB/GYN before it is shown to a user, and each item carries its source and last-reviewed date.
+- OBMOB is built with a board-certified OB/GYN. Clinical content is grounded in primary-source guidelines (ACOG, SMFM, primary literature) and cross-checked against them, and each item carries its source. AI can be wrong; this is exam practice, not medical advice.
 
 ## Positioning facts (safe to quote verbatim)
 - "Built for the ABOG oral boards — not a generic mock."
