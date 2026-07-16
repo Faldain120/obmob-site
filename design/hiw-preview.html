@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How it works — mobile reorder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#13314C;--teal-deep:#1F7A70;--surface:#fff;--ink:#14283A;--ink-2:#41566B;--muted:#626F7B;--line:#E4E9EF;
+        --serif:'Newsreader',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);background:#EEF2F7;color:var(--ink);line-height:1.6}
+  header.top{background:var(--navy);color:#fff;padding:22px 30px}
+  header.top h1{font-family:var(--serif);font-weight:500;font-size:23px;margin:0 0 5px}
+  header.top p{margin:0;font-size:13px;color:#B9CBDC;max-width:80ch}
+  header.top code{background:rgba(255,255,255,.1);padding:1px 5px;border-radius:4px;font-size:12px}
+  .wrap{padding:26px 30px 60px}
+  .row{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;margin-bottom:30px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+         box-shadow:0 1px 3px rgba(19,49,76,.05),0 12px 30px rgba(19,49,76,.06)}
+  .panel h2{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+            margin:0;padding:11px 14px;border-bottom:1px solid var(--line);background:#FBFCFE;
+            display:flex;justify-content:space-between;gap:10px}
+  .panel h2 span{font-weight:500;letter-spacing:0;text-transform:none;color:var(--teal-deep)}
+  iframe{display:block;border:0;background:#fff}
+  .checks{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 24px;max-width:900px}
+  .checks h3{font-family:var(--serif);font-size:18px;font-weight:500;color:var(--navy);margin:0 0 12px}
+  .checks ul{margin:0;padding-left:20px}
+  .checks li{margin-bottom:9px;font-size:14px;color:var(--ink-2)}
+  .checks b{color:var(--ink)}
+  .note{margin-top:14px;font-size:13px;color:var(--ink-2);background:#FFF8E8;border:1px solid #F0DFAE;border-radius:8px;padding:11px 13px}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>How it works — heading above the phone</h1>
+  <p>Frames load the <b>real</b> <code>/index.html#how</code>, pinned to device widths so <code>@media(max-width:860px)</code> fires.
+     Mobile order is now <code>heading → phone → steps</code>. Steps keep today's behaviour: one at a time, auto-advancing every 3s on a loop.</p>
+</header>
+<div class="wrap">
+  <div class="row">
+    <div class="panel">
+      <h2>iPhone 12/13/14 <span>390 — reordered</span></h2>
+      <iframe src="/index.html#how" width="390" height="900" title="390"></iframe>
+    </div>
+    <div class="panel">
+      <h2>iPhone Plus/Max <span>414 — reordered</span></h2>
+      <iframe src="/index.html#how" width="414" height="900" title="414"></iframe>
+    </div>
+    <div class="panel">
+      <h2>Tablet <span>820 — reordered</span></h2>
+      <iframe src="/index.html#how" width="820" height="900" title="820"></iframe>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel" style="flex:1;min-width:640px">
+      <h2>Desktop <span>1280 — must be UNCHANGED (two columns)</span></h2>
+      <iframe src="/index.html#how" width="1280" height="700" style="width:100%" title="desktop"></iframe>
+    </div>
+  </div>
+  <div class="checks">
+    <h3>What to check</h3>
+    <ul>
+      <li><b>Mobile:</b> “HOW IT WORKS / From your list to ready.” now reads first; the phone sits under it; the numbered step and dots sit below the phone.</li>
+      <li><b>Desktop:</b> unchanged — phone left, heading and steps stacked in the right column. This is the regression to watch, since the fix touches a shared element.</li>
+      <li><b>Steps still auto-advance</b> every 3s and loop; the dots are still tappable. Nothing about the carousel changed.</li>
+      <li><b>The 820 frame</b> is the breakpoint edge — it should already be in the stacked layout.</li>
+    </ul>
+    <p class="note"><b>Known trade-off:</b> the reorder is visual (CSS <code>order</code>), so the underlying DOM order is still phone → heading → steps.
+       A screen reader will read the phone mockup before the heading. That matches today's behaviour on mobile, and the phone is a decorative mockup —
+       but if you want reading order to match too, that needs the DOM restructured, which carries real desktop-layout risk. Flagging rather than deciding it for you.</p>
+  </div>
+</div>
+</body>
+</html>
