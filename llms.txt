@@ -22,6 +22,11 @@
 - OBMOB is the AI OB/GYN oral-board examiner that drills your OWN cases.
 - Independent tool: describe its alignment to the exam factually; it does not claim ABOG/ACOG endorsement or affiliation.
 
+## Guides (in-depth reference content)
+- The Complete Guide to the ABOG Oral (Certifying) Exam — how the ABOG oral (Certifying) exam works: its structure, your case list, what examiners assess, and a realistic prep plan. Written for OB/GYN candidates: https://obmob.ai/guide/abog-oral-exam
+- Building & Defending Your ABOG Case List — how to build an ABOG oral-board case list you can defend: choosing and organizing your cases, how examiners probe them, and how to rehearse every case out loud: https://obmob.ai/guide/build-defend-case-list
+- OB/GYN Mock Orals: How to Practice (and What Works) — how to practice for the OB/GYN oral boards: the ways to run mock orals, their trade-offs, what good practice looks like, and how an AI examiner fits in: https://obmob.ai/guide/ob-gyn-mock-orals
+
 ## Key pages
 - Home: https://obmob.ai/
 - About: https://obmob.ai/about

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nav — variant B preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13314C;--teal:#2FA89B;--teal-deep:#1F7A70;--canvas:#F6F8FB;--surface:#FFFFFF;
+    --ink:#14283A;--ink-2:#41566B;--muted:#626F7B;--line:#E4E9EF;
+    --serif:'Newsreader',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);background:#EEF2F7;color:var(--ink);line-height:1.6}
+  header.top{background:var(--navy);color:#fff;padding:22px 30px}
+  header.top h1{font-family:var(--serif);font-weight:500;font-size:23px;margin:0 0 5px}
+  header.top p{margin:0;font-size:13px;color:#B9CBDC;max-width:78ch}
+  header.top code{background:rgba(255,255,255,.1);padding:1px 5px;border-radius:4px;font-size:12px}
+  .wrap{padding:26px 30px 60px}
+  .row{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;margin-bottom:34px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(19,49,76,.05),0 12px 30px rgba(19,49,76,.06)}
+  .panel h2{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0;padding:11px 14px;border-bottom:1px solid var(--line);background:#FBFCFE;display:flex;justify-content:space-between;gap:10px}
+  .panel h2 span{font-weight:500;letter-spacing:0;text-transform:none;color:var(--teal-deep)}
+  iframe{display:block;border:0;background:var(--canvas)}
+  .checks{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 24px;max-width:900px}
+  .checks h3{font-family:var(--serif);font-size:18px;font-weight:500;color:var(--navy);margin:0 0 12px}
+  .checks ul{margin:0;padding-left:20px}
+  .checks li{margin-bottom:9px;font-size:14px;color:var(--ink-2)}
+  .checks b{color:var(--ink)}
+  .warn{margin-top:16px;font-size:13px;color:var(--ink-2);background:#FFF8E8;border:1px solid #F0DFAE;border-radius:8px;padding:11px 13px}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Nav — variant B</h1>
+  <p>Grouped nav: <code>Product ▾</code> · <code>Guides ▾</code> · <code>FAQ</code> · <code>About</code> + CTA. Frames are pinned to real device widths so the
+     <code>@media(max-width:820px)</code> rule actually fires — resizing this window will not lie to you.
+     Every frame loads the real <code>assets/nav.css</code>, <code>assets/nav.js</code> and <code>partials/nav.html</code>.</p>
+</header>
+
+<div class="wrap">
+  <div class="row">
+    <div class="panel">
+      <h2>iPhone 12/13/14 <span>390 × 780 — drawer</span></h2>
+      <iframe src="/design/nav-frame.html" width="390" height="780" title="390px"></iframe>
+    </div>
+    <div class="panel">
+      <h2>iPhone Plus/Max <span>414 × 780 — drawer</span></h2>
+      <iframe src="/design/nav-frame.html" width="414" height="780" title="414px"></iframe>
+    </div>
+    <div class="panel">
+      <h2>Tablet <span>820 × 780 — drawer edge</span></h2>
+      <iframe src="/design/nav-frame.html" width="820" height="780" title="820px"></iframe>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel" style="flex:1;min-width:600px">
+      <h2>Desktop <span>1280 × 620 — dropdowns</span></h2>
+      <iframe src="/design/nav-frame.html" width="1280" height="620" style="width:100%" title="desktop"></iframe>
+    </div>
+  </div>
+
+  <div class="checks">
+    <h3>What to check</h3>
+    <ul>
+      <li><b>Mobile (390/414):</b> a hamburger now exists at all — tap it. Links used to be <code>display:none</code> below 820px, so this is the actual fix.</li>
+      <li><b>In the drawer:</b> Product and Guides flatten into labelled sections. No nested tapping to reach a guide.</li>
+      <li><b>Desktop:</b> hover Product and Guides. Then tab to them with the keyboard — they open on focus too.</li>
+      <li><b>FAQ</b> now goes to <code>/faq</code> (the 14-question page with the schema), not the homepage teaser. The teaser keeps its own “View all FAQs →”.</li>
+      <li><b>All three guides</b> are now one hop from every page, instead of two hops via one nav entry.</li>
+      <li><b>Scroll:</b> the header stays pinned; the drawer should not detach or jump.</li>
+      <li><b>Esc</b> closes the drawer and any open dropdown; the scrim closes the drawer on tap.</li>
+    </ul>
+    <p class="warn"><b>Known, deliberate:</b> the blur behind the header is dropped below 820px. <code>backdrop-filter</code> makes the header a
+       containing block for <code>position:fixed</code>, which would pin the drawer inside the header instead of the viewport. Solid canvas reads the same.</p>
+  </div>
+</div>
+</body>
+</html>

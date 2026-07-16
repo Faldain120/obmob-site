@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nav frame — variant B</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css" />
+<style>
+  /* Filler only — represents page content so sticky + scroll behaviour is visible. */
+  .demo{max-width:var(--col);margin:0 auto;padding:48px 28px 90px}
+  .demo h1{font-family:var(--serif);font-size:32px;font-weight:500;color:var(--navy);margin:0 0 10px;letter-spacing:-.2px}
+  .demo p{color:var(--ink-2);max-width:60ch;margin:0 0 14px}
+  .demo .note{font-size:12.5px;color:var(--muted);border-left:2px solid var(--teal);padding-left:12px;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:99px;font-size:13.5px;font-weight:600;transition:background .18s ease,transform .18s ease}
+</style>
+<link rel="stylesheet" href="/assets/nav.css" />
+</head>
+<body>
+<!--NAV:START-->
+<!-- Generated from partials/nav.html by scripts/build-nav.mjs. Do not edit here. -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/">
+      <span class="seal"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#13314C" stroke-width="3"/><circle cx="32" cy="32" r="23" fill="none" stroke="#2FA89B" stroke-width="2"/><text x="32" y="41" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" font-weight="600" fill="#13314C">OB</text></svg></span>
+      <span class="wordmark">OBMOB<span class="tm">&trade;</span></span>
+    </a>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+      <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <div class="nav-group" data-label="Product">
+        <button class="nav-trigger" type="button" aria-expanded="false">Product<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button>
+        <div class="nav-pop">
+          <a href="/#difference">The difference</a>
+          <a href="/#how">How it works</a>
+          <a href="/#pricing">Pricing</a>
+        </div>
+      </div>
+      <div class="nav-group" data-label="Guides">
+        <button class="nav-trigger" type="button" aria-expanded="false">Guides<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button>
+        <div class="nav-pop nav-pop--wide">
+          <a href="/guide/abog-oral-exam">The ABOG Oral Exam<span class="d">Its structure, your case list, and what examiners assess</span></a>
+          <a href="/guide/build-defend-case-list">Building &amp; Defending Your Case List<span class="d">Choosing cases, and rehearsing every one out loud</span></a>
+          <a href="/guide/ob-gyn-mock-orals">OB/GYN Mock Orals<span class="d">The ways to practice, and what actually works</span></a>
+        </div>
+      </div>
+      <a href="/faq">FAQ</a>
+      <a href="/about">About</a>
+      <a class="btn btn-primary" href="/#waitlist">Get early access <span class="arr">&rarr;</span></a>
+    </nav>
+  </div>
+  <div class="nav-scrim"></div>
+</header>
+<!--NAV:END-->
+<div class="demo">
+  <h1>Nav frame</h1>
+  <p>This frame loads the real <code>/assets/nav.css</code>, the real <code>/assets/nav.js</code>, and the real
+     <code>partials/nav.html</code> — it is stamped by the same script that stamps the live pages, so it cannot
+     drift from what ships.</p>
+  <p>Scroll to check the sticky header. Below 820px the hamburger appears and the links become a drawer;
+     above it, Product and Guides open as dropdowns on hover, click, or keyboard focus.</p>
+  <p class="note">Filler text. The real pages keep their own content and styles — only the nav is shared.</p>
+  <p>Lorem sections follow so there is something to scroll under the sticky bar. The oral exam is a
+     three-part examination administered by ABOG, structured around your case list and standardized
+     structured cases across the content blueprint.</p>
+  <p>Candidates present and defend their own collected cases; examiners probe management decisions,
+     timing, and the reasoning behind them rather than recall alone.</p>
+  <p>Rehearsing out loud is the part most candidates skip, because it needs another physician in the room.
+     That is the gap an always-available voice examiner fills.</p>
+  <p>Each drill returns a scored rubric across knowledge, differential, judgment, management,
+     communication, and delivery — plus the moments where the answer wavered.</p>
+  <p>More filler to extend the scroll region and prove the header stays pinned without the drawer
+     detaching or the page jumping.</p>
+  <p>And a final paragraph, so the bottom of the page is reachable on a 390px viewport.</p>
+</div>
+</body>
+</html>

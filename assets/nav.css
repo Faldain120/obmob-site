@@ -1,0 +1,102 @@
+/* ─── Site nav — SINGLE SOURCE OF TRUTH ───────────────────────────────
+   Markup lives in partials/nav.html and is stamped into every page by
+   scripts/build-nav.mjs. Nav rules live ONLY here: they were removed from
+   index.html's inline <style> and from site.css so the two copies can no
+   longer drift apart. Edit the nav here, nowhere else.
+
+   Button styles (.btn/.btn-primary) are deliberately NOT redefined — each
+   page already owns those.
+   ------------------------------------------------------------------- */
+
+header.nav{position:sticky;top:0;z-index:50;background:rgba(246,248,251,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--col);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.brand .seal{display:inline-flex;width:34px;height:34px}
+.brand .seal svg{width:100%;height:100%;display:block}
+.brand .wordmark{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--navy);letter-spacing:.3px}
+.brand .tm{font-size:9px;color:var(--muted);vertical-align:super;letter-spacing:.5px}
+.brand:hover{text-decoration:none}
+
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links > a{font-size:13.5px;font-weight:500;color:var(--ink-2)}
+.nav-links > a:hover{color:var(--teal-deep);text-decoration:none}
+
+/* ─── Dropdown groups (Product, Guides) ─── */
+.nav-group{position:relative}
+.nav-trigger{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--ink-2);background:none;border:0;padding:0;cursor:pointer;line-height:inherit}
+.nav-trigger:hover{color:var(--teal-deep)}
+.nav-trigger .chev{width:9px;height:9px;transition:transform .18s ease;flex-shrink:0}
+.nav-group[data-open="true"] .nav-trigger{color:var(--teal-deep)}
+.nav-group[data-open="true"] .chev{transform:rotate(180deg)}
+
+.nav-pop{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-4px);min-width:230px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px;box-shadow:0 2px 6px rgba(19,49,76,.06),0 18px 44px rgba(19,49,76,.13);opacity:0;visibility:hidden;transition:opacity .16s ease,transform .16s ease,visibility .16s;display:grid;gap:2px}
+.nav-pop::before{content:"";position:absolute;bottom:100%;left:0;right:0;height:14px}
+.nav-group[data-open="true"] .nav-pop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nav-pop--wide{min-width:322px}
+.nav-pop a{display:block;padding:9px 11px;border-radius:8px;color:var(--ink);font-size:13.5px;font-weight:500;line-height:1.45}
+.nav-pop a:hover{background:var(--navy-soft);color:var(--navy);text-decoration:none}
+.nav-pop a .d{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.5}
+.nav-pop a:hover .d{color:var(--ink-2)}
+
+/* No-JS / keyboard fallback: focus-within opens the group. */
+.nav-group:focus-within .nav-pop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+
+/* Mouse users get hover, but only where hovering is real (not touch). */
+@media (hover:hover) and (pointer:fine){
+  .nav-group:hover .nav-pop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav-group:hover .chev{transform:rotate(180deg)}
+  .nav-group:hover .nav-trigger{color:var(--teal-deep)}
+}
+
+/* ─── Hamburger — only exists once JS is confirmed ─── */
+.nav-burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;margin-right:-8px;background:none;border:0;border-radius:9px;cursor:pointer;color:var(--navy);flex-shrink:0}
+.nav-burger:hover{background:var(--navy-soft)}
+.nav-burger svg{width:22px;height:22px;display:block}
+.nav-burger .x{display:none}
+.nav-scrim{display:none}
+
+@media(max-width:820px){
+  /* Without JS the links simply wrap and stay reachable — never display:none,
+     which is what used to make the whole nav vanish on phones. */
+  .nav-in{flex-wrap:wrap;padding:12px 20px}
+  .nav-links{gap:18px;flex-wrap:wrap;font-size:14px}
+
+  .nav-js .nav-burger{display:inline-flex}
+  .nav-js .nav-in{flex-wrap:nowrap}
+
+  /* backdrop-filter makes header.nav a containing block for position:fixed, which
+     would anchor the drawer to the header instead of the viewport. Drop the blur
+     on mobile (solid canvas reads the same) so the drawer can escape to the edges. */
+  .nav-js header.nav{backdrop-filter:none;background:var(--canvas)}
+
+  /* Drawer */
+  .nav-js .nav-links{position:fixed;top:0;right:0;bottom:0;width:min(84vw,340px);z-index:60;
+    background:var(--surface);border-left:1px solid var(--line);box-shadow:-24px 0 60px rgba(19,49,76,.16);
+    display:flex;flex-direction:column;align-items:stretch;gap:0;padding:84px 22px 28px;overflow-y:auto;
+    transform:translateX(100%);transition:transform .26s cubic-bezier(.4,0,.2,1);visibility:hidden}
+  .nav-js .nav-links[data-open="true"]{transform:translateX(0);visibility:visible}
+
+  .nav-js .nav-links > a{padding:13px 2px;font-size:15px;color:var(--ink);border-bottom:1px solid var(--line)}
+  .nav-js .nav-links > a.btn{margin-top:22px;border:0;justify-content:center;text-align:center;padding:13px 18px;font-size:14.5px}
+
+  /* Groups flatten into labelled sections — no nested tapping. */
+  .nav-js .nav-group{position:static}
+  .nav-js .nav-trigger{display:none}
+  .nav-js .nav-pop{position:static;opacity:1;visibility:visible;transform:none;min-width:0;
+    border:0;border-radius:0;box-shadow:none;padding:0;background:none;display:block}
+  .nav-js .nav-pop::before{display:none}
+  .nav-js .nav-group::before{content:attr(data-label);display:block;font-size:10.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:20px 2px 7px}
+  .nav-js .nav-pop a{padding:11px 2px;border-radius:0;border-bottom:1px solid var(--line);font-size:15px}
+  .nav-js .nav-pop a:hover{background:none}
+  .nav-js .nav-pop a .d{display:none}
+
+  .nav-js .nav-scrim{display:block;position:fixed;inset:0;z-index:55;background:rgba(14,39,64,.4);
+    opacity:0;visibility:hidden;transition:opacity .26s ease,visibility .26s}
+  .nav-js .nav-scrim[data-open="true"]{opacity:1;visibility:visible}
+  .nav-js body.nav-locked{overflow:hidden}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .nav-pop,.nav-js .nav-links,.nav-scrim,.chev{transition:none}
+}

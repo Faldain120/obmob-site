@@ -17,18 +17,47 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/nav.css" />
+<script src="/assets/nav.js" defer></script>
 </head>
 <body>
-<header class="nav"><div class="nav-in">
-  <a class="brand" href="/"><span class="seal"><svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#13314C" stroke-width="3"/><circle cx="32" cy="32" r="23" fill="none" stroke="#2FA89B" stroke-width="2"/><text x="32" y="41" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" font-weight="600" fill="#13314C">OB</text></svg></span><span class="wordmark">OBMOB<span class="tm">&trade;</span></span></a>
-  <nav class="nav-links">
-    <a href="/#difference">The difference</a>
-    <a href="/#how">How it works</a>
-    <a href="/faq">FAQ</a>
-    <a href="/#pricing">Pricing</a>
-    <a class="btn btn-primary" href="/#waitlist">Get early access <span class="arr">&rarr;</span></a>
-  </nav>
-</div></header>
+<!--NAV:START-->
+<!-- Generated from partials/nav.html by scripts/build-nav.mjs. Do not edit here. -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/">
+      <span class="seal"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#13314C" stroke-width="3"/><circle cx="32" cy="32" r="23" fill="none" stroke="#2FA89B" stroke-width="2"/><text x="32" y="41" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" font-weight="600" fill="#13314C">OB</text></svg></span>
+      <span class="wordmark">OBMOB<span class="tm">&trade;</span></span>
+    </a>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+      <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <div class="nav-group" data-label="Product">
+        <button class="nav-trigger" type="button" aria-expanded="false">Product<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button>
+        <div class="nav-pop">
+          <a href="/#difference">The difference</a>
+          <a href="/#how">How it works</a>
+          <a href="/#pricing">Pricing</a>
+        </div>
+      </div>
+      <div class="nav-group" data-label="Guides">
+        <button class="nav-trigger" type="button" aria-expanded="false">Guides<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button>
+        <div class="nav-pop nav-pop--wide">
+          <a href="/guide/abog-oral-exam">The ABOG Oral Exam<span class="d">Its structure, your case list, and what examiners assess</span></a>
+          <a href="/guide/build-defend-case-list">Building &amp; Defending Your Case List<span class="d">Choosing cases, and rehearsing every one out loud</span></a>
+          <a href="/guide/ob-gyn-mock-orals">OB/GYN Mock Orals<span class="d">The ways to practice, and what actually works</span></a>
+        </div>
+      </div>
+      <a href="/faq">FAQ</a>
+      <a href="/about">About</a>
+      <a class="btn btn-primary" href="/#waitlist">Get early access <span class="arr">&rarr;</span></a>
+    </nav>
+  </div>
+  <div class="nav-scrim"></div>
+</header>
+<!--NAV:END-->
 
 <main>
 <div class="doc">
