@@ -2,3 +2,6 @@ node_modules/
 
 .vercel
 .env*
+
+# impeccable skill run artifacts
+.impeccable/
